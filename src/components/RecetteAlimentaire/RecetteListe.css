@@ -1,0 +1,22 @@
+.recette-liste {
+    padding: 20px;
+}
+
+.recette-liste h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.recette-liste ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.recette-liste li {
+    margin: 10px 0;
+}
+
+.recette-liste a {
+    text-decoration: none;
+    color: #007bff;
+}

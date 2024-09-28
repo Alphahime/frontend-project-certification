@@ -1,0 +1,13 @@
+.recette-detail {
+    padding: 20px;
+}
+
+.recette-detail h1 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.recette-detail p {
+    font-size: 18px;
+    margin: 5px 0;
+}

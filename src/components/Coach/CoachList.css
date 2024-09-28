@@ -1,0 +1,343 @@
+/* Section bannière */
+.bannier-coach {  
+    background: linear-gradient(to bottom, rgba(34, 87, 122, 0.8), rgba(128, 237, 153, 0.8)), 
+                url('../../assets/images/homme-corde.jpg');
+    color: white;
+    text-align: center;
+    padding: 50px 0;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Coach cards grid */
+.coach-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 3rem;
+    background-color: #22577A; 
+    padding: 20px;
+}
+
+.coach-card {
+    background-color: #ffffff; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 0 1 calc(50% - 10px);
+    margin-right: 10px;
+    color: rgb(0, 0, 0);
+    position: relative; 
+}
+
+.coach-card:nth-child(2n) {
+    margin-right: 0;
+}
+
+/* Stars for rating */
+.coach-card::before {
+    content: "★★★★★";
+    font-size: 1.5rem;
+    color: gold; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Details link styling */
+.details-link {
+    background-color: #22577A;
+    color: white;
+    border: 1px solid #80ED99;
+    padding: 0.5rem 3rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-size: 14px;
+   
+}
+
+.details-link:hover {
+    background-color: #80ED99;
+    color: #22577A;
+}
+
+/* Section presentation */
+.section-presentation {
+    text-align: center;
+    padding: 5rem;
+}
+
+.section-presentation h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.text-blue {
+    color: #22577A;
+}
+
+.text-green {
+    color: #80ED99;
+}
+
+/* Image and text section */
+.section-image-and-texte {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 20px;
+}
+
+.section-image {
+    width: 573px;
+    height: 499px;
+    background-color: #f0f0f0;
+    background-image: url(../../assets/images/image-presentation.png);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.section-texte {
+    width: 40%;
+    height: 300px;
+    font-size: 24px;
+}
+
+/* Coach card */
+.coach-card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 0 1 calc(30% - 10px); /* Set the card width to 30% */
+    margin-right: 10px;
+    color: rgb(0, 0, 0);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+/* Profile image */
+.profile-image {
+    width: 120px; 
+    height: 120px; 
+    border-radius: 50%; 
+    object-fit: cover;
+    margin-bottom: 10px;
+    background-image: url(../../assets/images/profile.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* Stars for rating */
+.coach-card::before {
+    content: "★★★★★";
+    font-size: 1.5rem;
+    color: gold; 
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+/* Coach grid */
+.coach-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 3rem;
+    background-color: #22577A; 
+    padding: 20px;
+}
+
+/* Details link */
+.details-link {
+    background-color: #22577A;
+    color: white;
+    border: 1px solid #80ED99;
+    padding: 0.5rem 3rem;
+    border-radius: 0.4rem;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.details-link:hover {
+    background-color: #80ED99;
+    color: #22577A;
+}
+
+.banner-coach-details {
+    background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+    text-align: center;
+    padding: 20px;
+    width: 100%;
+    height: 300px;
+    color: black;
+}
+
+.coach-profile-photo {
+    display: flex;
+    width: 150px; 
+    height: 150px;
+    border-radius: 100%; 
+    margin-top: 15px; 
+    background-image: url(../../assets/images/profile.png);
+    background-size: cover;
+    background-position: contain;
+    background-repeat: no-repeat;
+}
+
+.coach-details-container {
+    padding: 20px;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 20px; 
+}
+
+.details-card {
+    background-color: #f9f9f9; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.details-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+/* Banner Section */
+.banner-coach-details {
+    background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    color: black;
+}
+
+.banner-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 12px;
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+}
+.banner-left h1{
+    font-size: 18px;
+    color: #22577A;
+}
+.validation-icon {
+    margin-right: 2px; 
+   
+}
+
+/* Button styling */
+.send-message-button {
+    background-color: #22577A; 
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.send-message-button:hover {
+    background-color: #80ED99;
+}
+
+/* Profile image */
+.coach-profile-photo {
+    width: 100px; 
+    height: 100px;
+    border-radius: 100%; 
+    object-fit: cover;
+}
+
+/* Coach details container */
+.coach-details-container {
+    padding: 20px;
+}
+
+/* Details grid */
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+/* Details card */
+.details-card {
+    background-color: #f9f9f9; 
+    border: 1px solid #e0e0e0; 
+    border-radius: 8px; 
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
+
+.details-card h4 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+/* Style for Reserve Button */
+.reserve-button {
+    background-color: #22577A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.reserve-button:hover {
+    background-color: #22577A;
+    border: 2px solid #28a745;
+}
+
+/* Style for Video Call Button */
+.video-call-button {
+    background-color: #22577A;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.video-call-button:hover {
+    background-color: #22577A;
+    border: 1px solid #28a745;
+}
+.start-video-call-button{
+    background-color: #22577A;
+    color: white;
+    border: 1px solid #80ED99;
+    padding: 0.5rem 3rem;
+    border-radius: 0.4rem;
+}

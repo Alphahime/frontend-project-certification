@@ -1,0 +1,38 @@
+.recette-form {
+    padding: 20px;
+}
+
+.recette-form h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.recette-form div {
+    margin-bottom: 15px;
+}
+
+.recette-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.recette-form input,
+.recette-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.recette-form button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.recette-form button:hover {
+    background-color: #0056b3;
+}

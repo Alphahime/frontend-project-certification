@@ -1,0 +1,572 @@
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+
+.logo-placeholder {
+  width: 40px; 
+  height: 40px;
+  background-color: #e0e0e0; 
+  border-radius: 50%; 
+  background-image: url('../../assets/images/logo-alflux.png'); 
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.banner-placeholder {
+  height: 650px; 
+  background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-placeholder {
+  height: 180px;
+  background-color: #351515; 
+}
+
+.devenir-coach{
+  background-color: #22577A;
+  color: white;
+  border: 1px solid #80ED99;
+  padding: 0.5rem 3rem;
+  border-radius: 0.4rem;
+}
+.auth-button{
+  width: 20%;
+  height: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.auth-button button{
+  padding: 0.5rem 2rem;
+  background-color: #22577A;
+  border: 1px solid #80ED99;
+  color: white;
+  border-radius: 0.4rem;
+}
+
+/* Styles pour le menu de navigation */
+.navbar-nav .nav-item {
+  position: relative;
+}
+
+.navbar-nav .nav-link {
+  color: black; 
+  font-size: 16px; 
+  text-decoration: none; 
+  padding-bottom: 5px; 
+  transition: color 0.3s ease;
+}
+
+
+.navbar-nav .nav-link:hover {
+  color: #22577A; 
+}
+
+
+.navbar-nav .nav-link::after {
+  content: ''; 
+  position: absolute; 
+  width: 0; 
+  height: 2px; 
+  left: 0; 
+  bottom: 0; 
+  background-color: #80ED99; 
+  transition: width 0.3s ease; 
+}
+
+
+.navbar-nav .nav-link:hover::after {
+  width: 100%; 
+}
+
+.navbar {
+  background-color: #687d8a4b; 
+  color: black;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+
+}
+.navbar .nav-link {
+  color: black;
+}
+.espace-recherche{
+  width: 60%;
+  height: 130px;
+  background-color: #22577A;
+  border-radius: 0.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+}
+
+/* Espace de Recherche */
+.espace-recherche {
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  gap: 15px; 
+  margin-top: 20px;
+}
+
+.search-input {
+  padding: 10px; 
+  border: 1px solid #80ED99; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  color: #22577A; 
+  outline: none; 
+  width: 400px; 
+}
+
+.search-button {
+  background-color: #22577A;
+  color: white; 
+  border: 1px solid #80ED99;
+  padding: 10px 20px; 
+  border-radius: 5px;
+  font-size: 16px; 
+  cursor: pointer; 
+  display: flex;
+  align-items: center; 
+}
+
+.search-icon {
+  margin-right: 5px; 
+  font-size: 18px; 
+}
+
+.search-button:hover {
+  background-color: #1a3d5e; 
+}
+
+.alflux-presentation {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  text-align: center;
+  background-color: #56565609;
+  border-top-left-radius: 20rem;
+  border-bottom-right-radius: 20rem;
+}
+
+.text-center {
+  text-align: center; 
+  margin-top: 5rem;
+}
+.circles{
+  width: 300px;
+  height: auto;
+  
+}
+.circles .cercle1{
+  width: 100px;
+  height: 100px;
+  background-color: #22577A;
+  border-radius: 100%;
+  margin-top: 2rem;
+  position: absolute;
+}
+
+.circles .cercle2{
+  width: 100px;
+  height: 100px;
+  background-color: #80ED99;
+  border-radius: 100%;
+  margin-left: -2rem;
+  
+}
+.card-section2 {
+  width: 400px;
+  height: 497px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+              0 6px 20px rgba(0, 0, 0, 0.1); 
+  border-radius: 10px; 
+  background-color: #fff; 
+  overflow: hidden; 
+}
+.image-style {
+  width: 100%; 
+  height: 300px; 
+}
+.section-texte{
+  width: 300px;
+  height: 400px;
+}
+
+.card-texte-container {
+  display: flex;
+  align-items: center; 
+  justify-content: space-around; 
+  padding: 20px;
+}
+
+.card-section2 {
+  width: 45%; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
+              0 6px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.section-texte {
+  width: 35%; 
+  font-size: 16px;
+  line-height: 1.5;
+  padding: 20px; 
+  font-size: 32px;
+  text-align: left;
+  margin-left: -2rem;
+}
+.text-overlay{
+  width: 100%;
+  height: auto;
+  margin-top: 5rem;
+}
+.form-oval{
+  width: 30px;
+  height: 50px;
+  background-color: #1a3d5e;
+  position: absolute;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin-left: 20rem;
+  margin-top: -28rem;
+}
+
+.alflux-presentation.inverse {
+  flex-direction: row-reverse;
+}
+
+.form-oval2{
+  width: 30px;
+  height: 50px;
+  background-color: #1a3d5e;
+  position: absolute;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  margin-left: -20rem;
+  margin-top: -28rem;
+}
+
+
+/* Section Nos Programmes */
+.nos-programmes-container {
+  background-image: url('../../assets/images/rectangle.png'); 
+  background-size: cover; 
+  background-position: center;
+  padding: 20px; 
+  border-radius: 10px;
+  background-repeat: no-repeat; 
+  display: flex;
+  justify-content: space-around;
+  margin-top: 4rem;
+}
+
+.program-card {
+  width: 25%;
+  height: 500px;
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+  margin-top: 3rem;
+}
+
+.program-card:hover {
+  transform: translateY(-10px);
+}
+
+.program-image {
+  width: 100%;
+  height: 500px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-color: white;
+  border: none;
+}
+
+.program-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 20px 0;
+ 
+}
+.button-info{
+  padding: 0.5rem 2rem;
+  background-color: #1a3d5e;
+  color: white;
+  border-radius: 0.3rem;
+  border: none;
+}
+.trait-bleu{
+  width: 100px;
+  height: 10px;
+  background-color: #1a3d5e;
+  margin-left: 42rem;
+  margin-top: 2rem;
+
+}
+.section-devnir-coach {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #56565609;
+  border-top-left-radius: 20rem;
+  border-bottom-right-radius: 20rem;
+}
+
+.text-devenir-coach {
+  text-align: center; 
+  margin-top: 10rem;
+}
+.section-text-coach{
+  width: 30%;
+  height: 400px;
+  background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+  border: 1rem;
+  text-align: center;
+  padding: 2rem;
+  margin-left:3rem;
+}
+.section-image-coach{
+  width: 50%;
+  height: 450px;
+  background-image: url('../../assets/images/coach.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.devenir-coach-button{
+  background-color: #22577A;
+  color: white;
+  border: 1px solid #80ED99;
+  padding: 0.5rem 3rem;
+  border-radius: 0.4rem;
+  margin-top: 2rem;
+}
+.section-text-coach p{
+  font-size: 20px;
+  color: black;
+  text-align: left;
+  margin-top: 2rem;
+}
+
+/* Testimonial Section */
+.testimonial-container {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.testimonial-card {
+  width: 25%;
+  height: 300px;
+
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(158, 158, 158, 0.1), 0 6px 20px rgba(200, 200, 200, 0.1);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.testimonial-profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+.testimonial-text {
+  font-style: italic;
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  position: relative;
+}
+
+.testimonial-text::before, .testimonial-text::after {
+  content: '"';
+  font-size: 18px;
+  color: #80ED99;
+  position: absolute;
+  top: -10px;
+}
+
+.testimonial-text::before {
+  left: -10px;
+}
+
+.testimonial-text::after {
+  right: -10px;
+}
+
+.testimonial-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #80ED99;
+  border: none;
+  cursor: pointer;
+}
+
+.pagination-dot:hover {
+  background-color: #22577A;
+}
+
+.section-comment-marche{
+  width: 100%;
+  height: 800px;
+  background-image: url('../../assets/images/ecline-image.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+ 
+}
+
+.contain-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  padding-top: 2rem;
+}
+.search-coach{
+  background-color: #22577A;
+  color: white;
+  border: 1px solid #80ED99;
+  padding: 0.5rem 3rem;
+  border-radius: 0.4rem;
+ 
+}
+
+.steps-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20rem;
+  position: absolute;
+  margin-left: 15rem;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #80ED99; 
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.step-description {
+  margin-top: 10px;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  font-size: 18px;
+}
+
+.line {
+  width: 200px;
+  height: 3px;
+  background-color: #80ED99; 
+
+}
+
+@media (max-width: 768px) {
+  .steps-container {
+    flex-direction: column;
+  }
+
+  .line {
+    width: 3px;
+    height: 80px;
+  }
+}
+.contain-all-box{
+  width: 100%;
+  height: 300px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 30rem;
+  position: absolute;
+  
+}
+.contain-all-box .card{
+  width: 20%;
+  height: 200px;
+  border: 1px solid black;
+  background-color: #80ED99;
+  cursor: pointer;
+  padding: 1rem;
+}
+.contain-all-box .card:hover{
+
+  background-color:#1a3d5e;
+}
+.contain-all-box .card p{
+ color: white;
+ font: 14px;
+}
+
+/* Recettes Section */
+.recettes-container {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 40px 0;
+}
+
+.recette-card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 30%;
+  height: 200px;
+  text-align: center;
+}
+
+.recette-image {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.recette-button {
+  background-color: #22577A;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.recette-button:hover {
+  background-color: #22577A;
+}
