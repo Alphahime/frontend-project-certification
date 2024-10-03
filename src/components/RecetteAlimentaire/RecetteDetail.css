@@ -1,5 +1,19 @@
 .recette-detail {
+    display: flex; 
+    gap: 20px; 
     padding: 20px;
+}
+
+.recette-info {
+    background-color: #22577A; 
+    color: white; 
+    padding: 20px;
+    border-radius: 8px; 
+    flex: 1; 
+}
+
+.description-section {
+    flex: 2; 
 }
 
 .recette-detail h1 {
@@ -7,7 +21,40 @@
     margin-bottom: 15px;
 }
 
-.recette-detail p {
+.recette-detail img {
+    width: 100%; 
+    max-width: 1000px; 
+    height: 400px;
+    border-radius: 8px; 
+}
+
+.recette-info p {
     font-size: 18px;
-    margin: 5px 0;
+    margin: 10px 0;
+}
+
+.ingredients-list li {
+    list-style-type: none; 
+    position: relative;
+    padding-left: 25px; 
+    margin-bottom: 10px; 
+}
+
+.ingredients-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.4em;
+    width: 10px;
+    height: 10px;
+    background-color: #80ED99; 
+    border-radius: 50%; 
+}
+
+.etapes-list {
+    margin-top: 20px;
+}
+
+.etapes-list li {
+    margin-bottom: 10px; 
 }

@@ -1,0 +1,130 @@
+.admin-container {
+  display: flex;
+}
+
+.admin-content {
+  margin-left: 300px;
+  padding: 20px;
+}
+
+.admin-search-bar {
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.admin-recette-cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.admin-recette-card {
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-recette-image {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.heart-icon {
+  cursor: pointer;
+  color: red;
+}
+
+.admin-lire-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.admin-lire-btn:hover {
+  background-color: #0056b3;
+}
+
+.add-recipe-btn {
+  padding: 10px 15px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-recipe-btn:hover {
+  background-color: #218838;
+}
+
+.popup-form {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 50%;
+  height: auto;
+  
+}
+
+.close-form-btn {
+  margin-top: 10px;
+  padding: 5px 10px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.close-form-btn:hover {
+  background-color: #c82333;
+}
+.form-content form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.form-content label {
+  display: block;
+}
+
+.form-content input,
+.form-content textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.form-content textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-content button {
+  grid-column: 1 / -1;
+  justify-self: center;
+}

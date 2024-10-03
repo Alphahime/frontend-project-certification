@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CoachList.css';
-
+import Header from '../Header'; 
+import Footer from '../Footer'; 
 
 
 const CoachList = () => {
@@ -31,6 +32,7 @@ const CoachList = () => {
 
     return (
         <div>
+               <Header />
             {/* Bannière */}
             <div className="bannier-coach">
                 <h1>Découvrez nos meilleurs coachs sportifs</h1>
@@ -75,8 +77,9 @@ const CoachList = () => {
         </div>
     ))}
 </div>
-
+<Footer />
         </div>
+        
     );
 };
 

@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar {
+    background-color: #275d844c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    
+  }
+  
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+
+  }
+  
+  .logo-placeholder {
+    width: 60px;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 50%;
+  }
+  
+  .navbar-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    color: white;
+  }
+  
+  .nav-item {
+    margin-left: 20px;
+  }
+  
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+
+  }
+  .nav-item{
+    color: white;
+  }
+   
+  .devenir-coach {
+  background-color: #22577A;
+  color: white;
+  border: 1px solid #80ED99;
+  padding: 0.5rem 3rem;
+  border-radius: 0.4rem;
+  }
+  
+  .devenir-coach:hover {
+    background-color: #80ED99;
+  }
+  

@@ -3,13 +3,14 @@ import './Home.css';
 import imageBienEtre from '../../assets/images/image.jpg';
 import imageNutrition from '../../assets/images/nutrition-image.png';
 import musculationImage from '../../assets/images/musculation.png';
-import fitnessImage from '../../assets/images/fitness.jpg';
+import fitnessImage from '../../assets/images/fit-femme.png';
 import preparationImage from '../../assets/images/preparation.png';
 import profile1 from '../../assets/images/profile.png';
 import profile2 from '../../assets/images/profile.png';
 import profile3 from '../../assets/images/profile.png';
 import fruitSaladImage from '../../assets/images/salade-image.png';
 import anotherRecipeImage from '../../assets/images/viande-image.png';
+
 
 
 function Home() {
@@ -57,7 +58,7 @@ function Home() {
 
         {/* Espace de Recherche */}
         <div className='espace-recherche'>
-          <select className="search-input">
+          <select className="search-inputs">
             <option value="musculation">Musculation</option>
             <option value="fitness">Fitness</option>
             <option value="preparation-physique">Préparation physique</option>
@@ -127,21 +128,21 @@ function Home() {
 <h2 className="text-center">Nos programmes d'entraînement</h2>
 <div className="nos-programmes-container">
   {/* Card Musculation */}
-  <div className="program-card">
+  <div className="program-cards">
   <div className="program-title">Musculation</div>
     <img src={musculationImage} alt="Musculation" className="program-image" />
     <button className='button-info'>En savoir plus</button>
   </div>
 
   {/* Card Fitness */}
-  <div className="program-card">
+  <div className="program-cards">
   <div className="program-title">Fitness</div>
     <img src={fitnessImage} alt="Fitness" className="program-image" />
    <button className='button-info'>En savoir plus</button>
   </div>
 
   {/* Card Préparation Physique */}
-  <div className="program-card">
+  <div className="program-cards">
   <div className="program-title">Préparation Physique</div>
     <img src={preparationImage} alt="Préparation Physique" className="program-image" />
     <button className='button-info'>En savoir plus</button>
@@ -271,11 +272,13 @@ function Home() {
         </div>
       
       </div>
+  
       <div className="testimonial-pagination">
         <button className="pagination-dot"></button>
         <button className="pagination-dot"></button>
         <button className="pagination-dot"></button>
       </div>
+     
 </div>
 
     

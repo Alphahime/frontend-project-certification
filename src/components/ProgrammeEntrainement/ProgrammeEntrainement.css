@@ -1,0 +1,20 @@
+.programme-list {
+    margin: 20px;
+  }
+  
+  .programme-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .programme-item h3 {
+    color: #333;
+  }
+  
+  .programme-item p {
+    margin: 5px 0;
+  }
+  
