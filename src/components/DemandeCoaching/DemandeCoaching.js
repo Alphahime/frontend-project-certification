@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import DemandeCoachingForm from './DemandeCoachingForm';
 import './DemandeCoaching.css';
 
 const DemandeCoaching = () => {
   const [demandeStatus, setDemandeStatus] = useState('');
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const handleDemandeSubmit = (formData) => {
     fetch('http://127.0.0.1:8000/api/coaches', {
       method: 'POST',
       headers: {
-    
         'Accept': 'application/json',
       },
-      body: formData, 
+      body: formData,
     })
       .then((response) => {
         return response.text().then((text) => {
-          console.log('Réponse brute du serveur:', text); 
+          console.log('Réponse brute du serveur:', text);
 
           if (!response.ok) {
             throw new Error(`Erreur lors de l'envoi de la demande: ${text}`);
@@ -35,6 +36,9 @@ const DemandeCoaching = () => {
 
   return (
     <div className="demande-coaching-body">
+      <button className="back-button" onClick={() => navigate('/')}>
+        &#8592; Retour
+      </button>
       <div className="demande-coaching-container">
         <div className="demande-coaching-form-container">
           <h2 className="demande-coaching-title">Demande de Coaching</h2>

@@ -33,53 +33,57 @@ const DemandeCoachingForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Expérience:</label>
-        <input type="text" value={experience} onChange={(e) => setExperience(e.target.value)} />
+        <label className="demande-coaching-label">Expérience:</label>
+        <input type="text" className="demande-coaching-input" value={experience} onChange={(e) => setExperience(e.target.value)} />
       </div>
       <div>
-        <label>Description:</label>
-        <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
+        <label className="demande-coaching-label">Description:</label>
+        <textarea className="demande-coaching-textarea" value={description} onChange={(e) => setDescription(e.target.value)} />
       </div>
       <div>
-        <label>Lieu:</label>
-        <input type="text" value={lieu} onChange={(e) => setLieu(e.target.value)} />
+        <label className="demande-coaching-label">Lieu:</label>
+        <input type="text" className="demande-coaching-input" value={lieu} onChange={(e) => setLieu(e.target.value)} />
       </div>
       <div>
-        <label>Services:</label>
+        <label className="demande-coaching-label">Services:</label>
         <input
           type="text"
+          className="demande-coaching-input"
           placeholder="Services (séparés par des virgules)"
           value={services}
           onChange={(e) => setServices(e.target.value)}
         />
       </div>
       <div>
-        <label>Diplômes:</label>
+        <label className="demande-coaching-label">Diplômes:</label>
         <input
           type="text"
+          className="demande-coaching-input"
           placeholder="Diplômes (séparés par des virgules)"
           value={diplomes}
           onChange={(e) => setDiplomes(e.target.value)}
         />
       </div>
       <div>
-        <label>Disponibilités:</label>
+        <label className="demande-coaching-label">Disponibilités:</label>
         <input
           type="text"
+          className="demande-coaching-input"
           placeholder="Disponibilités (séparés par des virgules)"
           value={disponibilites}
           onChange={(e) => setDisponibilites(e.target.value)}
         />
       </div>
       <div>
-        <label>Galerie de Photos:</label>
+        <label className="demande-coaching-label">Galerie de Photos:</label>
         <input
           type="file"
+          className="demande-coaching-input"
           multiple
           onChange={(e) => setGaleriePhotos([...e.target.files])}
         />
       </div>
-      <button type="submit">Envoyer la demande</button>
+      <button type="submit" className="demande-coaching-button">Envoyer la demande</button>
     </form>
   );
 };
