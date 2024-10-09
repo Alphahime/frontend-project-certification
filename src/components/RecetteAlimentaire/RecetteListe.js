@@ -8,7 +8,7 @@ import './RecetteListe.css';
 
 const RecetteListe = () => {
     const [recettes, setRecettes] = useState([]);
-    const [likes, setLikes] = useState({}); 
+    const [likedRecipes, setLikedRecipes] = useState(new Set()); // Use a Set to track liked recipes
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [searchTerm, setSearchTerm] = useState('');
@@ -18,13 +18,6 @@ const RecetteListe = () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/plans-nutritionnels');
                 setRecettes(response.data);
-
-                // Initialisation des "J'aime" pour chaque recette
-                const initialLikes = {};
-                response.data.forEach(recette => {
-                    initialLikes[recette.id] = 0; // Commence avec 0 "J'aime"
-                });
-                setLikes(initialLikes);
             } catch (error) {
                 setError(error);
                 console.error('Erreur lors de la récupération des recettes:', error);
@@ -38,10 +31,9 @@ const RecetteListe = () => {
 
     // Fonction pour gérer le clic sur l'icône "J'aime"
     const handleLike = (id) => {
-        setLikes((prevLikes) => ({
-            ...prevLikes,
-            [id]: prevLikes[id] + 1 // Augmente le compteur de "J'aime" pour l'ID spécifique
-        }));
+        if (!likedRecipes.has(id)) { // Check if the recipe is already liked
+            setLikedRecipes((prevLikes) => new Set(prevLikes).add(id)); // Add the recipe ID to the Set
+        }
     };
 
     if (loading) {
@@ -83,10 +75,10 @@ const RecetteListe = () => {
                             
                             <div className="likes-section">
                                 <FaHeart 
-                                    className="heart-icon" 
+                                    className={`heart-icon ${likedRecipes.has(recette.id) ? 'liked' : ''}`} 
                                     onClick={() => handleLike(recette.id)} 
                                 />
-                                <span>{likes[recette.id]} J'aime</span>
+                                <span>{likedRecipes.has(recette.id) ? 'J\'aime' : 'Aimer'} </span>
                             </div>
                             
                             <Link to={`/recettes/${recette.id}`} className="lire-btn">Lire la recette</Link>
@@ -95,13 +87,8 @@ const RecetteListe = () => {
                 </div>
                 <Footer />
             </div>
-
-            {/* Inclure le Footer ici */}
-           
         </div>
-        
     );
-   
 };
 
 export default RecetteListe;

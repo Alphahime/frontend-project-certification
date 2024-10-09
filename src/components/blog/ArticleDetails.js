@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import BlogBanner from './BlogBanner'; // Importer la bannière
-import './ArticleDetails.css'; // Importer le fichier CSS pour les détails de l'article
-import Commentaire from '../Commentaire/Commentaire'; // Importer le composant Commentaire
+import BlogBanner from './BlogBanner';
+import './ArticleDetails.css'; 
+import Commentaire from '../Commentaire/Commentaire'; 
 
 const ArticleDetails = () => {
-  const { id } = useParams(); // Récupérer l'ID de l'article depuis l'URL
-  const [article, setArticle] = useState(null); // État pour stocker les détails de l'article
-  const [loading, setLoading] = useState(true); // État de chargement
-  const [error, setError] = useState(null); // État pour gérer les erreurs
-  const [views, setViews] = useState(0); // État pour stocker le nombre de vues
-  const [comments, setComments] = useState([]); // État pour stocker les commentaires
+  const { id } = useParams();
+  const [article, setArticle] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  const [error, setError] = useState(null);
+  const [views, setViews] = useState(0);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     const fetchArticleDetails = async () => {
       try {
-        const response = await axios.get(`http://127.0.0.1:8000/api/articles/${id}`); // Récupérer l'article en fonction de l'ID
-        setArticle(response.data.data); // Mettre à jour l'état avec les données récupérées
-        setViews(response.data.data.views || 0); // Mettre à jour le nombre de vues
-        setComments(response.data.data.comments || []); // Mettre à jour la liste des commentaires
+        const response = await axios.get(`http://127.0.0.1:8000/api/articles/${id}`); 
+        setArticle(response.data.data); 
+        setViews(response.data.data.views || 0); 
+        setComments(response.data.data.comments || []); 
       } catch (error) {
         console.error('Erreur lors de la récupération des détails de l\'article:', error);
         setError('Erreur lors de la récupération des détails de l\'article');

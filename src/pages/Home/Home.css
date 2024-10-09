@@ -104,7 +104,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
- 
+  
 }
 
 /* Espace de Recherche */
@@ -115,22 +115,24 @@
   gap: 15px; 
   margin-top: 20px;
   padding: 2rem;
+  border-radius: 0.5rem;
 }
 
 .search-inputs {
   padding: 10px; 
-  border: 1px solid #80ED99; 
+  border: 2px solid #80ED99;
   border-radius: 5px; 
   font-size: 16px; 
   color: #22577A; 
   outline: none; 
   width: 300px; 
+  background-color: white;
 }
 
 .search-button {
   background-color: #22577A;
   color: white; 
-  border: 1px solid #80ED99;
+  border: 2px solid #80ED99;
   padding: 10px 20px; 
   border-radius: 5px;
   font-size: 16px; 
@@ -187,8 +189,7 @@
 .card-section2 {
   width: 400px;
   height: 497px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 
-              0 6px 20px rgba(0, 0, 0, 0.1); 
+
   border-radius: 10px; 
   background-color: #fff; 
   overflow: hidden; 
@@ -267,7 +268,9 @@
   background-repeat: no-repeat; 
   display: flex;
   justify-content: space-around;
-  margin-top: 4rem;
+ 
+  width: 100%;
+  height: auto;
 }
 
 .program-cards {
@@ -287,11 +290,12 @@
 
 .program-image {
   width: 100%;
-  height: 500px;
+  height: 300px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   background-color: white;
   border: none;
+  border-radius: 1rem;
 }
 
 .program-title {
@@ -306,13 +310,14 @@
   color: white;
   border-radius: 0.3rem;
   border: none;
+  margin-top: 4rem;
 }
 .trait-bleu{
   width: 100px;
   height: 10px;
   background-color: #1a3d5e;
   margin-left: 42rem;
-  margin-top: 2rem;
+  margin-top: 4rem;
 
 }
 .section-devnir-coach {
@@ -348,7 +353,7 @@
   background-position: center;
 }
 
-.devenir-coach-button{
+.devenir-coaches-button{
   background-color: #22577A;
   color: white;
   border: 1px solid #80ED99;

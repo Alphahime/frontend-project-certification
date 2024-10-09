@@ -108,3 +108,22 @@
     border-radius: 5px;
     border: 1px solid #ddd;
 }
+
+.filter-section {
+    margin: 20px 0; 
+}
+
+.filter-section button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    background-color: #22577A;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.filter-section button:hover {
+    background-color: #80ED99;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './Sidebar'; // Chemin corrigé
+import Sidebar from './Sidebar'; 
 
 const ProgrammesGestion = () => {
   // Add logic to fetch and display program data similar to CoachsGestion

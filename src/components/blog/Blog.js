@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import BlogBanner from './BlogBanner';
 import BlogArticle from './BlogArticle';
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 const Blog = () => {
   const [articles, setArticles] = useState([]);
@@ -26,6 +28,7 @@ const Blog = () => {
 
   return (
     <div>
+      <Header /> {/* Ajout du Header ici */}
       <BlogBanner />
       <div className="article-section">
         {loading ? (
@@ -42,6 +45,7 @@ const Blog = () => {
           )
         )}
       </div>
+      <Footer />
     </div>
   );
 };

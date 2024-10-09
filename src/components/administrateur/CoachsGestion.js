@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Sidebar from './Sidebar'; // Assurez-vous que le chemin est correct
+import Sidebar from './Sidebar'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faDumbbell, faUsers } from '@fortawesome/free-solid-svg-icons';
-import './CoachsGestion.css'; // Importez votre fichier CSS
+import './CoachsGestion.css'; 
 
 const CoachsGestion = () => {
   const [coachs, setCoachs] = useState([]);

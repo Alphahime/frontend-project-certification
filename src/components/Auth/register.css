@@ -1,0 +1,88 @@
+.register-container {
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../../assets/images/background-register.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    min-height: 100vh; 
+}
+
+h2 {
+    color: #22577A;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-rows {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    width: 100%; 
+    background-color: #80ed9900;
+}
+
+.formulaire-inscription {
+    width: 60%; 
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0); 
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.form-groups {
+    flex: 1;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.form-group:last-child {
+    margin-right: 0;
+}
+
+.full-width {
+    flex-basis: 100%;
+    background-color: #80ed9900;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: #22577A; 
+
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #80ED99;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px; 
+    background-color: #80ed9900;
+}
+
+.register-button:hover {
+    background-color: #80ED99;
+}
+.register-button {
+    background-color: #22577A; 
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+  
+  .register-button:hover {
+    background-color: #80ED99;
+  }
+  

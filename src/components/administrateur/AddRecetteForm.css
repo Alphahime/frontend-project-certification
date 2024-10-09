@@ -1,0 +1,52 @@
+.add-recette-container {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.add-recette-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-recette-form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.add-recette-form input,
+.add-recette-form textarea {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-recette-form input[type="file"] {
+    padding: 5px;
+}
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background-color: #218838;
+}
+
+.success-message {
+    color: green;
+}
+
+.error-message {
+    color: red;
+}

@@ -24,12 +24,25 @@ import ArticleForm from './components/administrateur/ArticleForm';
 import Blog from './components/blog/Blog';
 import ArticleDetails from './components/blog/ArticleDetails';
 import ProgrammeList from './components/administrateur/ProgrammeList';
+import ProgrammeFormAdd from './components/administrateur/ProgrammeFormAdd';
+
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
+
+import SuiviSeance from './components/suiviSeance/SuiviSeance';
+import ProfilUtilisateur from './components/ProfilUtilisateur/ProfilUtilisateur';
+
+import DemandeCoaching from './components/DemandeCoaching/DemandeCoaching';
+
+import AddRecetteForm from './components/administrateur/AddRecetteForm';
+
+import Ressource from './components/Ressource/Ressource';
+import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Routes existantes */}
         <Route path="/" element={<Home />} />
         <Route path="/coaches" element={<CoachList />} />
         <Route path="/coaches/:id" element={<CoachDetails />} />
@@ -37,32 +50,41 @@ function App() {
         <Route path="/recettes/:id" element={<RecetteDetail />} />
         <Route path="/ajouter-recette" element={<RecetteForm />} />
         
-        {/* Routes pour Programme Entrainement */}
+        {/* Routes for Training Programs */}
         <Route path="/programmes-entrainement" element={<ProgrammeEntrainementList />} />
         <Route path="/programmes-entrainement/:id" element={<ProgrammeEntrainementDetail />} />
         
-        {/* Nouvelle route pour Categories */}
-        <Route path="/categories" element={<CategoriesList />} /> 
+        {/* Route for Categories */}
+        <Route path="/categories" element={<CategoriesList />} />
         
-        {/* Routes pour Seance Entrainement */}
+        {/* Routes for Training Sessions */}
         <Route path="/seances-entrainement" element={<SeanceEntrainement />} />
         
-        {/* Routes administrateur */}
+        {/* Administrator Routes */}
         <Route path="/administrateur/coaches" element={<CoachsGestion />} />
         <Route path="/administrateur/programmes" element={<ProgrammesGestion />} />
         <Route path="/administrateur/utilisateurs" element={<UtilisateursGestion />} />
         <Route path="/administrateur/articles" element={<ArticlesGestion />} />
         <Route path="/administrateur/roles" element={<RolesGestion />} />
-
-        {/* Nouvelle route pour Plans Nutritionnels */}
         <Route path="/administrateur/plans-nutritionnels" element={<PlansNutritionnels />} />
-
         <Route path="/administrateur/ajouter-article" element={<ArticleForm />} />
 
         <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<ArticleDetails />} /> {/* Détails de l'article */}
+        <Route path="/blog/:id" element={<ArticleDetails />} />
         <Route path="/administrateur/programmes-entrainement" element={<ProgrammeList />} />
+        <Route path="/ajouter-programme" element={<ProgrammeFormAdd />} />
+
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+
+        <Route path="/suivi-seance" element={<SuiviSeance />} />
+        <Route path="/profil-utilisateur" element={<ProfilUtilisateur />} />
+
+        {/* Protected Route for DemandeCoaching */}
+        <Route path="/demande-coaching" element={<ProtectedRoute element={<DemandeCoaching />} />} />
         
+        <Route path="/administrateur/ajouter-recette" element={<AddRecetteForm />} />
+        <Route path="/ressources" element={<Ressource />} />
       </Routes>
     </Router>
   );

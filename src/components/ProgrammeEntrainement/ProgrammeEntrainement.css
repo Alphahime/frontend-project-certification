@@ -1,20 +1,267 @@
-.programme-list {
-    margin: 20px;
-  }
+/* Global container for programmes */
+.programme-container {
+  width: 100%;
+  padding: 40px;
+  background-color: #f0f0f0;
+  margin-top: 20px; /* Separate from banner */
+}
+
+/* Banner section */
+.espace-banniere {
+  position: relative;
+  width: 100%;
+  height: 350px;
+  background-color: #b3e6b3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.banner-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
+}
+
+.banner-text {
+  position: absolute;
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+/* Grid for programmes */
+.programme-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Programme card */
+.programme-card {
+  background: linear-gradient(to bottom, #22577A, #80ED99);
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.programme-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Programme image */
+.programme-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+/* Programme title */
+.programme-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* View button */
+.programme-card button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.programme-card button:hover {
+  background-color: #45a049;
+}
+
+/* Pagination buttons */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.pagination button {
+  padding: 10px 20px;
+  font-size: 1.5rem;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  color: gray;
+  cursor: not-allowed;
+}
+
+/* Next section */
+.next-section {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(to bottom, #f0f0f0, #80ED99);
+}
+
+.next-section-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   
-  .programme-item {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 10px;
-    margin-bottom: 10px;
-    background-color: #f9f9f9;
-  }
-  
-  .programme-item h3 {
-    color: #333;
-  }
-  
-  .programme-item p {
-    margin: 5px 0;
-  }
-  
+}
+
+.next-section-image {
+  width: 600px;
+  height: 500px;
+  margin-right: 20px;
+  object-fit: cover;
+  background-image: url(../../assets/images/progrmme-all.png);
+}
+
+.next-section-text {
+  width: 30%;
+  height: 300px;
+  padding: 0;
+  margin-top: -10rem;
+}
+.next-section-text h2{
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+.step-rond-bleu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  margin-top: 3rem;
+}
+
+
+.step-rond-bleu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  width: 100%;
+  height: auto;
+  gap: 20px; 
+}
+
+.bleu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; 
+}
+
+.bleu-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #22577A;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 10px; 
+  position: relative;
+}
+
+.bleu-circle i {
+  color: white; 
+  font-size: 16px;
+}
+
+.bleu-item p {
+  font-size: 14px;
+  color: #333;
+  margin: 0; 
+  padding-left: 10px;
+}
+.button-down-musculation{
+  background-color: #22577A;
+  color: white;
+  border: 1px solid #80ED99;
+  padding: 0.5rem 3rem;
+  border-radius: 0.4rem;
+  margin-top: 3rem;
+}
+
+.programme-detail-container {
+  padding: 40px;
+  background-color: #f8f8f8;
+  border-radius: 8px;
+  margin: 20px;
+}
+
+.programme-detail-container h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.programme-detail-container p {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.programme-detail-container strong {
+  font-weight: bold;
+}
+
+.programme-detail {
+  background-color: #f5f5f5; /* Light grey background for contrast */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 600px; /* Limit the width of the detail view */
+  margin: auto; /* Center the component */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+.programme-detail h2 {
+  color: #22577A; /* Title color */
+  margin-bottom: 10px; /* Space below the title */
+}
+
+.programme-detail p {
+  font-size: 16px; /* Base font size */
+  line-height: 1.5; /* Line height for readability */
+  margin: 5px 0; /* Space between paragraphs */
+}
+
+.programme-detail strong {
+  color: #80ED99; /* Emphasize labels with soft green */
+}
+
+.programme-detail img {
+  width: 100%; /* Responsive image */
+  border-radius: 8px; /* Rounded corners for the image */
+  margin-bottom: 15px; /* Space below the image */
+}
+
+.programme-detail p:first-child {
+  font-weight: bold; /* Make the first paragraph bold for emphasis */
+  font-size: 18px; /* Slightly larger font for the first paragraph */
+}
+
+.loading,
+.error {
+  text-align: center; /* Center the loading/error messages */
+  color: #22577A; /* Use the main color for text */
+}

@@ -1,5 +1,6 @@
 import React from 'react';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 import imageBienEtre from '../../assets/images/image.jpg';
 import imageNutrition from '../../assets/images/nutrition-image.png';
 import musculationImage from '../../assets/images/musculation.png';
@@ -10,50 +11,22 @@ import profile2 from '../../assets/images/profile.png';
 import profile3 from '../../assets/images/profile.png';
 import fruitSaladImage from '../../assets/images/salade-image.png';
 import anotherRecipeImage from '../../assets/images/viande-image.png';
-
-
-
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 function Home() {
+  const navigate = useNavigate(); 
   return (
     <div>
       {/* Menu */}
-      <nav className="navbar navbar-expand-lg">
-        <a className="navbar-brand" href="/">
-          {/* Logo Placeholder */}
-          <div className="logo-placeholder" />
-        </a>
-        <div className="collapse navbar-collapse">
-          <ul className="navbar-nav ml-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#accueil">Accueil</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#programmes">Programmes</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#coachs">Coachs</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#recettes">Recettes</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#blog">Blog</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#contact">Contact</a>
-            </li>
-          </ul>
-        </div>
-        <button className='devenir-coach'>Devenir Coach</button>
-      </nav>
+      <Header />
     
       {/* Bannière avec image de fond */}
       <div className="banner-placeholder">
         <h1 className="text-center">Vivez les merveilles du sport chez vous</h1>
      
         <div className='auth-button'>
-          <button>S'inscrire</button>
-          <button>Se connecter</button>
+          <button onClick={() => navigate('/register')}>S'inscrire</button>
+          <button onClick={() => navigate('/login')}>Se connecter</button>
         </div>
 
         {/* Espace de Recherche */}
@@ -121,7 +94,11 @@ function Home() {
         </div>
       </div>
 
-     
+      <div className='circles'>
+        <div className='cercle1'></div>
+        <div className='cercle2'></div>
+      </div>
+
 
      {/* Section Nos Programmes */}
      <div className='trait-bleu'></div>
@@ -160,11 +137,11 @@ function Home() {
     N’hésitez pas à vous inscrire en cliquant  
     sur le bouton ci-dessous:</p>
 
-     <button className='devenir-coach-button'>Devenir Coach</button>
+     <button className='devenir-coaches-button'>Devenir Coach</button>
 </div>
 <div className='section-image-coach'></div>
 </div>
-
+<div className='trait-bleu'></div>
 
  {/* Testimonials Section */}
  <h2 className="text-center">Témoignage de nos clients</h2>
@@ -278,7 +255,7 @@ function Home() {
         <button className="pagination-dot"></button>
         <button className="pagination-dot"></button>
       </div>
-     
+      <Footer />
 </div>
 
     

@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom'; 
 import './ProgrammeList.css'; 
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+//import Sidebar from './Sidebar'; 
 const ProgrammeList = () => {
+
   const [programmes, setProgrammes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState('');
 
+  const navigate = useNavigate(); 
+ 
   useEffect(() => {
     const fetchProgrammes = async () => {
       try {
@@ -43,10 +48,11 @@ const ProgrammeList = () => {
   }
 
   return (
+   
     <div className="container">
+
       <h1>Liste des Programmes d'Entraînement</h1>
 
-      {/* Barre de recherche */}
       <div className="search-bar">
         <input
           type="text"
@@ -58,7 +64,12 @@ const ProgrammeList = () => {
         <button className="search-button">Rechercher</button>
       </div>
 
-      {/* Statistiques */}
+      <div className="add-programme">
+        <button className="btn btn-primary" onClick={() => navigate('/ajouter-programme')}>
+          Ajouter un programme
+        </button>
+      </div>
+
       <div className="statistics">
         <div className="stat-item">
           <h3>Total Programmes</h3>
@@ -74,13 +85,12 @@ const ProgrammeList = () => {
         </div>
       </div>
 
-      {/* Liste des programmes */}
       <div className="programme-list">
         {filteredProgrammes.map((programme) => (
           <div key={programme.id} className="programme-card">
             {programme.images && (
               <img
-                src={programme.images}
+                src={programme.images} 
                 alt={programme.nom}
               />
             )}
@@ -93,6 +103,8 @@ const ProgrammeList = () => {
             <p><strong>Type de programme:</strong> {programme.type_programme}</p>
             <p><strong>Date de création:</strong> {programme.date_creation}</p>
             <p><strong>Date de mise à jour:</strong> {programme.date_mise_a_jour}</p>
+            <p><strong>Catégorie ID:</strong> {programme.categorie_id}</p>
+            <p><strong>Domaine Sportif ID:</strong> {programme.domaine_sportif_id}</p>
             <hr />
           </div>
         ))}

@@ -1,0 +1,91 @@
+.demande-coaching-body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  width: 100%;
+}
+
+.demande-coaching-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.demande-coaching-form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.input-row .demande-coaching-input {
+  width: 48%;
+}
+
+
+.demande-coaching-image-container {
+  width: 50%;
+  height: 100vh;
+ 
+}
+
+.demande-coaching-image {
+  width: 100%;
+  height: 100vh;
+  border-radius: 8px;
+  background-image: url(../../assets/images/demande-coaching.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.demande-coaching-title {
+  color: #333;
+}
+
+.demande-coaching-label {
+  font-weight: bold;
+}
+
+.demande-coaching-input,
+.demande-coaching-textarea,
+.demande-coaching-input[type="number"],
+.demande-coaching-input[type="date"] {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.demande-coaching-input[type="file"] {
+  margin: 5px 0 15px;
+}
+
+.demande-coaching-button {
+  background-color: #28a745; 
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.demande-coaching-button:hover {
+  background-color: #218838;
+}
+
+.demande-coaching-popup-message {
+  margin-top: 20px;
+  color: green;
+}

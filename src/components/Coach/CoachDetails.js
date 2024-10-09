@@ -3,28 +3,23 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import JitsiVideoCall from '../JitsiVideoCall'; 
 import './CoachList.css'; 
-import ChatBoard from '../ChatBoard'; // Assure-toi que ChatBoard est bien importé
-
+import ChatBoard from '../ChatBoard'; 
+import Header from '../Header'; 
+import Footer from '../Footer'; 
 const CoachDetails = () => {
     const { id } = useParams();
     const [coach, setCoach] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
-    // État pour gérer l'affichage de l'appel vidéo
     const [showVideoCall, setShowVideoCall] = useState(false);
     const [roomName, setRoomName] = useState('');
-    
-    // État pour gérer l'affichage du chatboard
     const [showChatBoard, setShowChatBoard] = useState(false);
 
-    // Fonction pour démarrer l'appel vidéo
     const handleStartVideoCall = () => {
         setRoomName(`coach-${Date.now()}`); 
         setShowVideoCall(true); 
     };
 
-    // Fonction pour afficher le chat
     const handleShowChatBoard = () => {
         setShowChatBoard(true);
     };
@@ -33,7 +28,15 @@ const CoachDetails = () => {
         const fetchCoachDetails = async () => {
             try {
                 const response = await axios.get(`http://127.0.0.1:8000/api/coaches/${id}`);
-                setCoach(response.data);
+                // Log the response to check the format
+                console.log(response.data);
+                // Vérifiez si la réponse est bien un JSON valide
+                if (typeof response.data === 'string') {
+                    // Essayez de parser la chaîne JSON
+                    setCoach(JSON.parse(response.data));
+                } else {
+                    setCoach(response.data);
+                }
                 setLoading(false);
             } catch (err) {
                 setError(err.message);
@@ -49,24 +52,20 @@ const CoachDetails = () => {
 
     return (
         <div>
-            {/* Banner */}
+                 <Header />
             {coach && (
                 <div className="banner-coach-details">
                     <div className="banner-right">
-                        <img
-                            className="coach-profile-photo"
-                            src={coach.profile_photo_url}
-                            alt=""
-                        />
+                        <img className="coach-profile-photo" src={coach.profile_photo_url} alt="" />
                         <p>Coach sportif</p>
                     </div>
                     <div className="banner-left">
                         <div className="validation-icon">
-                            <i className="fas fa-check-circle"></i> {/* Font Awesome icon */}
+                            <i className="fas fa-check-circle"></i>
                         </div>
                         <h1>Coach expérimenté</h1>
                         <div className="validation-icon">
-                            <i className="fas fa-check-circle"></i> {/* Font Awesome icon */}
+                            <i className="fas fa-check-circle"></i>
                         </div>
                         <h1>Profil et diplômes vérifiés</h1>
                         <button onClick={handleShowChatBoard} className="send-message-button">Envoyer un message</button>
@@ -74,10 +73,8 @@ const CoachDetails = () => {
                 </div>
             )}
 
-            {/* Main content with details */}
             <div className="coach-details-container">
                 <div className="details-grid">
-                    {/* Services Section */}
                     <div className="details-card">
                         <h4>Services</h4>
                         {coach.services && Object.entries(JSON.parse(coach.services)).map(([service, details], index) => (
@@ -91,7 +88,6 @@ const CoachDetails = () => {
                         ))}
                     </div>
 
-                    {/* Diplomas Section */}
                     <div className="details-card">
                         <h4>Diplômes</h4>
                         {coach.diplomes && JSON.parse(coach.diplomes).map((diplome, index) => (
@@ -101,7 +97,6 @@ const CoachDetails = () => {
                         ))}
                     </div>
 
-                    {/* Availability Section */}
                     <div className="details-card">
                         <h4>Disponibilités</h4>
                         {coach.disponibilites && Object.entries(JSON.parse(coach.disponibilites)).map(([jour, horaires], index) => (
@@ -111,24 +106,19 @@ const CoachDetails = () => {
                         ))}
                     </div>
 
-                    {/* Location Section */}
                     <div className="details-card">
                         <h4>Lieu</h4>
                         <p>{coach.lieu}</p>
-
-                        {/* Ajouter le bouton pour démarrer l'appel vidéo */}
                         <button onClick={handleStartVideoCall} className="start-video-call-button">
                             Démarrer un appel vidéo
                         </button>
-
-                        {/* Affichage de l'appel vidéo */}
                         {showVideoCall && <JitsiVideoCall roomName={roomName} />}
                     </div>
                 </div>
             </div>
 
-            {/* Affichage du ChatBoard */}
             {showChatBoard && <ChatBoard coachId={id} />}
+            <Footer />
         </div>
     );
 };

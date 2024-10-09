@@ -118,3 +118,105 @@ body {
     }
   }
   
+  .modal-body {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  /* CSS for arranging fields in two columns */
+  .form-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .form-row .form-group {
+    flex: 0 0 48%; 
+  }
+  
+  /* Styling for input fields */
+  .form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  /* Button styling */
+  .btn-success {
+    background-color: #28a745;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  input[type="text"], select {
+    box-shadow: none;
+  }
+  
+  input[type="text"]:focus, select:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+  }
+  
+  @media (max-width: 768px) {
+    /* Adjust for smaller screens */
+    .form-row .form-group {
+      flex: 0 0 100%;
+    }
+  }
+  
+  .container {
+    width: 100%;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-color: #0056b3;
+  }
+  .form-row{
+    width: 100%;
+    height: auto;
+   
+  }
+  form{
+  
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sidebar-programme{
+    position: absolute;
+  }
+  .d-flex {
+  display: flex;
+  
+}
+

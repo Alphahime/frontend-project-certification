@@ -32,18 +32,16 @@ const RecetteDetail = () => {
     return <div>Loading...</div>;
   }
 
-  // Si une erreur s'est produite lors du chargement des données
   if (error) {
     return <div>Erreur: {error.message}</div>;
   }
 
-  // Fonction pour parser JSON en toute sécurité
   const parseJSONSafely = (data) => {
     try {
       return JSON.parse(data);
     } catch (error) {
       console.error('Erreur de parsing JSON:', error);
-      return null; // ou retourner un tableau vide, selon ce que tu préfères
+      return []; // Retourne un tableau vide en cas d'erreur
     }
   };
 
@@ -58,11 +56,13 @@ const RecetteDetail = () => {
           <p><strong>Calories Totales:</strong> {recette.calories_totale}</p>
           <p>
             <strong>Ingrédients:</strong> 
-            {recette.ingredients ? parseJSONSafely(recette.ingredients)?.join(', ') || 'Aucun ingrédient' : 'Aucun ingrédient'}
+            {Array.isArray(parseJSONSafely(recette.ingredients)) ? 
+              parseJSONSafely(recette.ingredients).join(', ') : 'Aucun ingrédient'}
           </p>
           <p>
             <strong>Étapes:</strong> 
-            {recette.etapes ? parseJSONSafely(recette.etapes)?.join(', ') || 'Aucune étape' : 'Aucune étape'}
+            {Array.isArray(parseJSONSafely(recette.etapes)) ? 
+              parseJSONSafely(recette.etapes).join(', ') : 'Aucune étape'}
           </p>
         </>
       ) : (

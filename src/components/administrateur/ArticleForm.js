@@ -18,7 +18,7 @@ const ArticleForm = () => {
   };
 
   const handleFileChange = (e) => {
-    setArticle({ ...article, image: e.target.files[0] }); // Gestion du fichier image
+    setArticle({ ...article, image: e.target.files[0] }); 
   };
 
   const handleSubmit = async (e) => {

@@ -4,7 +4,7 @@ body {
   }
   
   .navbar {
-    background-color: #275d844c;
+    background-color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
