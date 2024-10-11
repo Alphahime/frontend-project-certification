@@ -1,13 +1,22 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom'; 
 import DemandeCoachingForm from './DemandeCoachingForm';
 import './DemandeCoaching.css';
 
 const DemandeCoaching = () => {
   const [demandeStatus, setDemandeStatus] = useState('');
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
   const handleDemandeSubmit = (formData) => {
+    const userId = localStorage.getItem('user_id'); // Récupérer l'ID utilisateur
+
+    if (!userId || isNaN(userId)) {
+      alert("L'ID utilisateur est invalide. Veuillez vous connecter.");
+      return;
+    }
+
+    formData.append('user_id', userId); // Ajouter l'ID utilisateur aux données du formulaire
+
     fetch('http://127.0.0.1:8000/api/coaches', {
       method: 'POST',
       headers: {
@@ -16,14 +25,12 @@ const DemandeCoaching = () => {
       body: formData,
     })
       .then((response) => {
-        return response.text().then((text) => {
-          console.log('Réponse brute du serveur:', text);
-
-          if (!response.ok) {
+        if (!response.ok) {
+          return response.text().then((text) => {
             throw new Error(`Erreur lors de l'envoi de la demande: ${text}`);
-          }
-          return JSON.parse(text);
-        });
+          });
+        }
+        return response.json(); // Modifié pour retourner des données JSON
       })
       .then((data) => {
         console.log('Données retournées par le serveur:', data);

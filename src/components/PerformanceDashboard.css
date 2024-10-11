@@ -1,0 +1,26 @@
+/* PerformanceDashboard.css */
+
+.dashboard-container {
+    max-width: 800px; /* Maximum width for the dashboard */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add some padding */
+    background-color: #f9f9f9; /* Light background color */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+  }
+  
+  .chart-container {
+    display: flex; /* Flexbox to center items */
+    justify-content: center; /* Center the chart */
+    margin-top: 20px; /* Margin on top of the chart */
+  }
+  
+  .bar-chart {
+    width: 100%; /* Full width for responsive design */
+    height: 400px; /* Increased height for better visibility */
+  }
+  
+  .chart-bar {
+    fill: #22577A; /* Custom color for the bars */
+  }
+  

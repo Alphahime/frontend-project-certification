@@ -1,43 +1,48 @@
 .recette-detail {
-    display: flex; 
-    gap: 20px; 
     padding: 20px;
 }
 
-.recette-info {
-    background-color: #22577A; 
-    color: white; 
+.banner {
+    background-image: url('../../assets/images/image-food.jpg'); 
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-repeat: no-repeat;
+    background-color: #cce5ff66; 
+}
+
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #cce5ff66; 
+}
+
+.banner-content {
+    z-index: 1;
+    color: white;
+    text-align: center;
+}
+
+.ingredients-section {
+    margin-top: 20px;
+    background-color: white;
     padding: 20px;
-    border-radius: 8px; 
-    flex: 1; 
-}
-
-.description-section {
-    flex: 2; 
-}
-
-.recette-detail h1 {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-.recette-detail img {
-    width: 100%; 
-    max-width: 1000px; 
-    height: 400px;
-    border-radius: 8px; 
-}
-
-.recette-info p {
-    font-size: 18px;
-    margin: 10px 0;
+    border-radius: 8px;
 }
 
 .ingredients-list li {
-    list-style-type: none; 
+    list-style-type: none;
     position: relative;
-    padding-left: 25px; 
-    margin-bottom: 10px; 
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-size: 20px;
 }
 
 .ingredients-list li::before {
@@ -45,16 +50,35 @@
     position: absolute;
     left: 0;
     top: 0.4em;
-    width: 10px;
-    height: 10px;
-    background-color: #80ED99; 
-    border-radius: 50%; 
+    width: 15px;
+    height: 15px;
+    background-color: #80ED99; /* Larger green circles */
+    border-radius: 50%;
+}
+
+.recette-detail img {
+    width: 100%; 
+    max-width: 1200px;
+    margin: 20px auto;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+.etapes-section,
+.recette-info {
+    display: inline-block;
+    vertical-align: top;
+    width: 48%; 
+    padding: 20px;
 }
 
 .etapes-list {
-    margin-top: 20px;
+    list-style: none;
 }
 
-.etapes-list li {
-    margin-bottom: 10px; 
+.recette-info {
+    background-color: #22577A;
+    color: white;
+    border-radius: 8px;
 }

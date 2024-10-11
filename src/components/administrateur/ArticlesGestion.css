@@ -14,27 +14,46 @@
   align-items: center;
 }
 
+.btn-add-article {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-add-article:hover {
+  background-color: #45a049;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
 .stats-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin: 20px 0;
 }
 
 .stat-item {
   background-color: #80ED99;
-  padding: 20px;
+  padding: 10px 15px;
   border-radius: 5px;
   text-align: center;
-  width: 45%;
+  width: 30%; /* Diminue la taille des cartes */
 }
 
 .stat-icon {
-  font-size: 2rem;
+  font-size: 1.5rem; /* Réduis la taille des icônes */
+  margin-bottom: 10px;
 }
 
 .articles-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Réglage automatique de la grille pour les cartes */
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Cartes un peu plus petites */
   gap: 20px;
 }
 
@@ -45,28 +64,34 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centre les éléments horizontalement */
-  text-align: center; /* Centre le texte */
+  align-items: center;
+  text-align: center;
 }
 
 .article-image {
-  max-width: 100%; /* Assure que l'image ne dépasse pas la carte */
-  height: auto; /* Garde les proportions de l'image */
-  border-radius: 5px; /* Coins arrondis pour l'image */
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
 }
 
-.pagination {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
-}
-
-.pagination button {
-  background-color: #22577A;
+.btn-delete {
+  background-color: #e74c3c;
   color: white;
-  padding: 10px 20px;
-  margin: 0 10px;
+  padding: 10px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.btn-delete:hover {
+  background-color: #c0392b;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
 }

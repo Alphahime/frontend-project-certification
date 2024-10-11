@@ -11,12 +11,33 @@
   position: relative;
   width: 100%;
   height: 350px;
-  background-color: #b3e6b3;
   display: flex;
   justify-content: center;
   align-items: center;
-
+  background-image: url('../../assets/images/bigman.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
+.espace-banniere::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+}
+
+.banner-text {
+  position: relative; /* Ensure the text is above the overlay */
+  color: white;
+  font-size: 48px;
+  font-weight: bold;
+  z-index: 1; /* Bring the text to the front */
+}
+
 
 .banner-image {
   width: 100%;
@@ -252,16 +273,29 @@
 .programme-detail img {
   width: 100%; /* Responsive image */
   border-radius: 8px; /* Rounded corners for the image */
-  margin-bottom: 15px; /* Space below the image */
+  margin-bottom: 15px;
 }
 
 .programme-detail p:first-child {
-  font-weight: bold; /* Make the first paragraph bold for emphasis */
-  font-size: 18px; /* Slightly larger font for the first paragraph */
+  font-weight: bold; 
+  font-size: 18px; 
 }
 
 .loading,
 .error {
-  text-align: center; /* Center the loading/error messages */
-  color: #22577A; /* Use the main color for text */
+  text-align: center; 
+  color: #22577A; 
+}
+.follow-button {
+  padding: 10px 20px;
+  background-color: #22577A;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.follow-button:hover {
+  background-color: #22577A; 
 }

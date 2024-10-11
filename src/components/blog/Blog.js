@@ -28,7 +28,7 @@ const Blog = () => {
 
   return (
     <div>
-      <Header /> {/* Ajout du Header ici */}
+      <Header /> 
       <BlogBanner />
       <div className="article-section">
         {loading ? (

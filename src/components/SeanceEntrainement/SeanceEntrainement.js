@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import './SeanceEntrainement.css';
 
 const SeanceEntrainement = () => {
     const [seances, setSeances] = useState([]); // État pour stocker les séances
@@ -57,26 +58,32 @@ const SeanceEntrainement = () => {
     if (error) return <p>Erreur: {error}</p>;
 
     return (
-        <div>
+        <div className="container">
             <h1>Seances d'Entrainement</h1>
-            <ul>
+            <div className="seance-list">
                 {seances.map(seance => (
-                    <li key={seance.id} onClick={() => handleSeanceClick(seance)} style={{ cursor: 'pointer' }}>
+                    <div 
+                        key={seance.id} 
+                        className="seance-card" 
+                        onClick={() => handleSeanceClick(seance)} 
+                        style={{ cursor: 'pointer' }}>
                         <h2>{seance.nom}</h2>
                         <p>{seance.description}</p>
                         <p>Durée: {seance.duree}</p>
-                    </li>
+                    </div>
                 ))}
-            </ul>
+            </div>
 
             {selectedSeance && (
-                <div>
+                <div className="selected-seance">
                     <h2>Détails de la Séance</h2>
-                    <img src={selectedSeance.imageUrl} alt={selectedSeance.nom} style={{ maxWidth: '100%', height: 'auto' }} />
-                    <div>
+                    <img src={selectedSeance.imageUrl} alt={selectedSeance.nom} className="seance-image" />
+                    <div className="chrono-container">
                         <h3>Chronomètre: {time}s</h3>
-                        <button onClick={handlePause}>{isActive ? 'Pause' : 'Reprendre'}</button>
-                        <button onClick={handleReset}>Réinitialiser</button>
+                        <div className="chrono-controls">
+                            <button onClick={handlePause}>{isActive ? 'Pause' : 'Reprendre'}</button>
+                            <button onClick={handleReset}>Réinitialiser</button>
+                        </div>
                     </div>
                 </div>
             )}

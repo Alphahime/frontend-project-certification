@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Sidebar from './Sidebar'; 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faUser, faDumbbell, faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faDumbbell, faUsers, faBell } from '@fortawesome/free-solid-svg-icons';
 import './CoachsGestion.css'; 
 
 const CoachsGestion = () => {
   const [coachs, setCoachs] = useState([]);
   const [filteredCoachs, setFilteredCoachs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [coachsPerPage] = useState(5); // 5 coachs par page
+  const [coachsPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
   const [stats, setStats] = useState({
     utilisateurs: 0,
@@ -17,21 +17,18 @@ const CoachsGestion = () => {
   });
 
   useEffect(() => {
-    // Récupérer la liste des coachs
     fetch('http://127.0.0.1:8000/api/coaches')
       .then(response => response.json())
       .then(data => {
         setCoachs(data);
-        setFilteredCoachs(data); // Initialiser les coachs filtrés
+        setFilteredCoachs(data);
       });
 
-    // Récupérer les statistiques (nombre d'utilisateurs, coachs, et programmes)
     fetch('http://127.0.0.1:8000/api/stats')
       .then(response => response.json())
       .then(data => setStats(data));
   }, []);
 
-  // Gestion du champ de recherche
   const handleSearch = (e) => {
     setSearchTerm(e.target.value);
     const filtered = coachs.filter(coach =>
@@ -41,7 +38,6 @@ const CoachsGestion = () => {
     setFilteredCoachs(filtered);
   };
 
-  // Pagination
   const indexOfLastCoach = currentPage * coachsPerPage;
   const indexOfFirstCoach = indexOfLastCoach - coachsPerPage;
   const currentCoachs = filteredCoachs.slice(indexOfFirstCoach, indexOfLastCoach);
@@ -61,14 +57,25 @@ const CoachsGestion = () => {
       <Sidebar />
       <div className="content">
         <h1 className="title">Gestion des Coachs</h1>
-        <div className="search-bar">
-          <input
-            type="text"
-            placeholder="Rechercher par expérience ou description"
-            value={searchTerm}
-            onChange={handleSearch}
-          />
+        <div className="search-bar-container">
+          <div className="search-bar">
+            <input
+              type="text"
+              placeholder="Rechercher par expérience ou description"
+              value={searchTerm}
+              onChange={handleSearch}
+            />
+          </div>
+          <div className="user-profile-container">
+            <FontAwesomeIcon icon={faBell} className="notification-icon" />
+            <img
+              src="path_to_profile_image.jpg" 
+              alt="User Profile"
+              className="user-profile"
+            />
+          </div>
         </div>
+
         <div className="stats-cards">
           <div className="stat-card">
             <FontAwesomeIcon icon={faUsers} className="stat-icon" />
@@ -92,6 +99,7 @@ const CoachsGestion = () => {
             </div>
           </div>
         </div>
+
         <div className="table-wrapper">
           <table className="table-coachs">
             <thead>
@@ -111,7 +119,19 @@ const CoachsGestion = () => {
                   <td>{coach.experience}</td>
                   <td>{coach.description}</td>
                   <td>{coach.lieu}</td>
-                  <td>{JSON.parse(coach.disponibilites).Lundi}, {JSON.parse(coach.disponibilites).Mardi}</td>
+                  <td>
+                    {coach.disponibilites ? (
+                      // Tentative d'analyse uniquement si les disponibilités sont valides JSON
+                      (() => {
+                        try {
+                          const disponibilites = JSON.parse(coach.disponibilites);
+                          return `${disponibilites.Lundi}, ${disponibilites.Mardi}`;
+                        } catch (error) {
+                          return 'Disponibilités non valides';
+                        }
+                      })()
+                    ) : 'Aucune disponibilité'}
+                  </td>
                   <td>
                     <button className="btn-accept" onClick={() => handleAccept(coach.id)}>Accepter</button>
                     <button className="btn-reject" onClick={() => handleReject(coach.id)}>Rejeter</button>

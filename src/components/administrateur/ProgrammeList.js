@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import './ProgrammeList.css'; 
 import 'bootstrap/dist/css/bootstrap.min.css';
-//import Sidebar from './Sidebar'; 
+import Sidebar from './Sidebar'; 
+
 const ProgrammeList = () => {
 
   const [programmes, setProgrammes] = useState([]);
@@ -48,66 +49,72 @@ const ProgrammeList = () => {
   }
 
   return (
-   
-    <div className="container">
+    <div className="d-flex"> 
+      <Sidebar className="sidebar-programme" /> 
+      <div className="container content-area">
+       
 
-      <h1>Liste des Programmes d'Entraînement</h1>
-
-      <div className="search-bar">
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Rechercher un programme..."
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <button className="search-button">Rechercher</button>
-      </div>
-
-      <div className="add-programme">
-        <button className="btn btn-primary" onClick={() => navigate('/ajouter-programme')}>
-          Ajouter un programme
-        </button>
-      </div>
-
-      <div className="statistics">
-        <div className="stat-item">
-          <h3>Total Programmes</h3>
-          <p>{programmes.length}</p>
+        <div className="search-bar">
+          <input
+            type="text"
+            className="search-input"
+            placeholder="Rechercher un programme..."
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+          <button className="search-button">Rechercher</button>
         </div>
-        <div className="stat-item">
-          <h3>Programmes en ligne</h3>
-          <p>{programmes.filter(p => p.status === 'actif').length}</p>
-        </div>
-        <div className="stat-item">
-          <h3>Programmes Présentiels</h3>
-          <p>{programmes.filter(p => p.type_programme === 'présentiel').length}</p>
-        </div>
-      </div>
 
-      <div className="programme-list">
-        {filteredProgrammes.map((programme) => (
-          <div key={programme.id} className="programme-card">
-            {programme.images && (
-              <img
-                src={programme.images} 
-                alt={programme.nom}
-              />
-            )}
-            <h2>{programme.nom}</h2>
-            <p><strong>Description:</strong> {programme.description}</p>
-            <p><strong>Durée:</strong> {programme.duree}</p>
-            <p><strong>Fréquence:</strong> {programme.frequence}</p>
-            <p><strong>Niveau de difficulté:</strong> {programme.niveau_difficulte}</p>
-            <p><strong>Status:</strong> {programme.status}</p>
-            <p><strong>Type de programme:</strong> {programme.type_programme}</p>
-            <p><strong>Date de création:</strong> {programme.date_creation}</p>
-            <p><strong>Date de mise à jour:</strong> {programme.date_mise_a_jour}</p>
-            <p><strong>Catégorie ID:</strong> {programme.categorie_id}</p>
-            <p><strong>Domaine Sportif ID:</strong> {programme.domaine_sportif_id}</p>
-            <hr />
+        <div className="d-flex justify-content-between">
+          {/* Statistics section */}
+          <div className="statistics">
+            <div className="stat-item">
+              <h3>Total Programmes</h3>
+              <p>{programmes.length}</p>
+            </div>
+            <div className="stat-item">
+              <h3>Programmes en ligne</h3>
+              <p>{programmes.filter(p => p.status === 'actif').length}</p>
+            </div>
+            <div className="stat-item">
+              <h3>Programmes Présentiels</h3>
+              <p>{programmes.filter(p => p.type_programme === 'présentiel').length}</p>
+            </div>
           </div>
-        ))}
+
+          {/* Add Programme Button aligned on the right */}
+          <div className="add-programme">
+            <button className="btn btn-primary" onClick={() => navigate('/ajouter-programme')}>
+              Ajouter un programme
+            </button>
+          </div>
+        </div>
+
+        {/* Programme List */}
+        <div className="programme-list">
+          {filteredProgrammes.map((programme) => (
+            <div key={programme.id} className="programme-card">
+              {programme.images && (
+                <img
+                  src={programme.images} 
+                  alt={programme.nom}
+                />
+              )}
+              <h2>{programme.nom}</h2>
+              <p><strong>Description:</strong> {programme.description}</p>
+              <p><strong>Durée:</strong> {programme.duree}</p>
+              <p><strong>Fréquence:</strong> {programme.frequence}</p>
+              <p><strong>Niveau de difficulté:</strong> {programme.niveau_difficulte}</p>
+              <p><strong>Status:</strong> {programme.status}</p>
+              <p><strong>Type de programme:</strong> {programme.type_programme}</p>
+              <p><strong>Date de création:</strong> {programme.date_creation}</p>
+              <p><strong>Date de mise à jour:</strong> {programme.date_mise_a_jour}</p>
+              <p><strong>Catégorie ID:</strong> {programme.categorie_id}</p>
+              <p><strong>Domaine Sportif ID:</strong> {programme.domaine_sportif_id}</p>
+              <hr />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

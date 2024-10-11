@@ -1,86 +1,84 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    mot_de_passe: '',
-  });
+  const [email, setEmail] = useState('');
+  const [motDePasse, setMotDePasse] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
-  const navigate = useNavigate(); 
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = async (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+
     try {
       const response = await fetch('http://127.0.0.1:8000/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ email, mot_de_passe: motDePasse }),
       });
 
-      if (!response.ok) {
-        throw new Error('Erreur lors de la connexion');
-      }
-
       const data = await response.json();
-      localStorage.setItem('token', data.token);
 
-      console.log('Token JWT:', data.token);
-     
-    
-      navigate('/demande-coaching'); 
+      if (response.ok) {
+        localStorage.setItem('user_id', data.user.id);
+        localStorage.setItem('user_email', email);
+        localStorage.setItem('user_role', data.role); 
 
-    } catch (error) {
-      console.error(error.message);
+      
+        switch (data.role) {
+          case 'super admin':
+            navigate('/administrateur/coaches');
+            break;
+          case 'coach':
+            navigate('/client-Dashboard');
+            break;
+          case 'client':
+            navigate('/demande-coaching'); 
+            break;
+          default:
+            navigate('/');
+        }
+      } else {
+        setError(data.message || 'Erreur de connexion.');
+      }
+    } catch (err) {
+      setError('Erreur de connexion au serveur.');
     }
   };
 
   return (
     <div className="login-page">
       <div className="auth-container">
-        <form onSubmit={handleSubmit}>
-          <h2>Connexion</h2> {/* Title at the top of the form */}
-          <input
-            type="email"
-            name="email"
-            placeholder="Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
-          <input
-            type="password"
-            name="mot_de_passe"
-            placeholder="Mot de passe"
-            value={formData.mot_de_passe}
-            onChange={handleChange}
-            required
-          />
-          <button type="submit">Se connecter</button>
-
-          {/* Link to Registration Page at the bottom of the form */}
-          <div className="register-redirect">
-            <p>Vous n'avez pas de compte ? 
-              <span 
-                className="register-link" 
-                onClick={() => navigate('/register')} 
-              >
-                S'inscrire
-              </span>
-            </p>
+        {error && <p className="error-message">{error}</p>}
+        <form onSubmit={handleLogin}>
+          <div>
+            <label htmlFor="email">Email:</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
           </div>
+          <div>
+            <label htmlFor="mot_de_passe">Mot de passe:</label>
+            <input
+              type="password"
+              id="mot_de_passe"
+              value={motDePasse}
+              onChange={(e) => setMotDePasse(e.target.value)}
+              required
+            />
+          </div>
+          <button type="submit">Se connecter</button>
         </form>
+        <div className="register-redirect">
+          <p>Pas encore inscrit? <span className="register-link" onClick={() => navigate('/register')}>S'inscrire ici</span></p>
+        </div>
       </div>
     </div>
   );

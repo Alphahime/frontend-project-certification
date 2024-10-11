@@ -1,64 +1,65 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar {
-    background-color: transparent;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 80px;
-    
-  }
-  
-  .navbar-brand {
-    display: flex;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+}
 
-  }
-  
-  .logo-placeholder {
-    width: 60px;
-    height: 60px;
-    background-color: #fff;
-    border-radius: 50%;
-  }
-  
-  .navbar-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: auto;
-    color: white;
-  }
-  
-  .nav-item {
-    margin-left: 20px;
-  }
-  
-  .nav-link {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
+.navbar {
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+}
 
-  }
-  .nav-item{
-    color: white;
-  }
-   
-  .devenir-coach {
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+
+.logo-placeholder {
+  width: 60px;
+  height: 60px;
+  background-color: #80ED99;
+  border-radius: 50%;
+}
+
+.navbar-nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  color: white; 
+}
+
+.nav-item {
+  margin-left: 20px;
+}
+
+.nav-link {
+  color: white; 
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-item {
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #ffffff0a; 
+  transition: box-shadow 0.3s;
+}
+
+.devenir-coach {
   background-color: #22577A;
   color: white;
   border: 1px solid #80ED99;
   padding: 0.5rem 3rem;
   border-radius: 0.4rem;
-  }
-  
-  .devenir-coach:hover {
-    background-color: #80ED99;
-  }
-  
+}
+
+.devenir-coach:hover {
+  background-color: #80ED99;
+}

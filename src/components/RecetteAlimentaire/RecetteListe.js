@@ -54,7 +54,7 @@ const RecetteListe = () => {
             <Header />
             
             <div className="recette-liste">
-                <div className="banner">
+                <div className="bannerListe">
                     <h1>Trouvez vos recettes</h1>
                 </div>
                 <input 

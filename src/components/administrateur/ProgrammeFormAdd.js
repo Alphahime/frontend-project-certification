@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import './ProgrammeList.css';
+
 const ProgrammeFormAdd = () => {
   const [formData, setFormData] = useState({
     nom: "",
@@ -15,6 +16,8 @@ const ProgrammeFormAdd = () => {
   });
 
   const [file, setFile] = useState(null);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -26,6 +29,8 @@ const ProgrammeFormAdd = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setSuccessMessage("");
+    setErrorMessage("");
 
     const data = new FormData();
     Object.keys(formData).forEach((key) => {
@@ -36,18 +41,32 @@ const ProgrammeFormAdd = () => {
     }
 
     try {
-      
       const response = await axios.post("http://localhost:3000/api/programme-entrainements", data, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       console.log(response.data);
+      setSuccessMessage("Programme ajouté avec succès !");
+      setFormData({
+        nom: "",
+        description: "",
+        duree: "",
+        frequence: "",
+        niveau_difficulte: "Débutant",
+        type_programme: "en ligne",
+        status: "actif",
+        domaine_sportif_id: "",  
+        categorie_id: "",
+      });
+      setFile(null); // Reset file input
     } catch (error) {
       console.error(error);
+      setErrorMessage("Une erreur est survenue, veuillez réessayer.");
     }
   };
 
   return (
-    <div>
+    <div className="container">
+      <h1>Ajouter un Programme d'Entraînement</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="nom">Nom du programme</label>
@@ -186,10 +205,12 @@ const ProgrammeFormAdd = () => {
         <button type="submit" className="btn btn-primary">
           Ajouter le programme
         </button>
+
+        {successMessage && <div className="alert alert-success">{successMessage}</div>}
+        {errorMessage && <div className="alert alert-danger">{errorMessage}</div>}
       </form>
     </div>
   );
 };
 
 export default ProgrammeFormAdd;
- 

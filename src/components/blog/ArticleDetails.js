@@ -4,6 +4,8 @@ import axios from 'axios';
 import BlogBanner from './BlogBanner';
 import './ArticleDetails.css'; 
 import Commentaire from '../Commentaire/Commentaire'; 
+import Footer from '../../components/Footer';
+import Header from '../../components/Header';
 
 const ArticleDetails = () => {
   const { id } = useParams();
@@ -45,7 +47,8 @@ const ArticleDetails = () => {
 
   return (
     <div>
-      <BlogBanner /> {/* Ajouter la bannière ici */}
+      <Header /> 
+      <BlogBanner /> 
       <div className="article-details">
         <h3>{article.nom}</h3>
         {article.image && (
@@ -54,18 +57,26 @@ const ArticleDetails = () => {
             alt={article.nom}
           />
         )}
-        <p>{article.description}</p>
+        <div className="article-description">
+          {article.description.split('\n').map((paragraph, index) => (
+            <React.Fragment key={index}>
+              <p>{paragraph}</p>
+              <hr className="separator" />
+            </React.Fragment>
+          ))}
+        </div>
         <p><strong>Nombre de vues:</strong> {views}</p>
         <p><strong>Commentaires:</strong> {comments.length}</p>
 
         <ul>
           {comments.map((comment, index) => (
-            <li key={index}>{comment.contenu}</li> // Assurez-vous que c'est 'contenu'
+            <li key={index}>{comment.contenu}</li>
           ))}
         </ul>
 
-        <Commentaire articleId={id} setComments={setComments} /> {/* Utiliser le composant Commentaire ici */}
+        <Commentaire articleId={id} blogId={article.blog_id} setComments={setComments} /> 
       </div>
+      <Footer />
     </div>
   );
 };

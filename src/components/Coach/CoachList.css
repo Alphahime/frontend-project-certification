@@ -300,7 +300,7 @@
     margin-bottom: 10px;
 }
 
-/* Style for Reserve Button */
+
 .reserve-button {
     background-color: #22577A;
     color: white;
@@ -340,4 +340,49 @@
     border: 1px solid #80ED99;
     padding: 0.5rem 3rem;
     border-radius: 0.4rem;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px; 
+}
+.book-session-button {
+   
+    background-color: #4CAF50; 
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.food-down{
+    width: 80%;
+    height: 600px;
+    background-image: url(../../assets/images/plate-culinaire.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 11rem;
+    margin-top: 10rem;
+}
+
+/* CoachList.css */
+
+/* Button for recettes */
+.recettes-button-container {
+    text-align: center; /* Center the button */
+    margin: 20px 0; /* Add some margin */
+}
+
+.recettes-button {
+    padding: 10px 20px;
+    background-color: #22577A; 
+    color: #ffffff; 
+    text-decoration: none; 
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.recettes-button:hover {
+    background-color: #80ED99;
 }

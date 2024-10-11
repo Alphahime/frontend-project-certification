@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // Import useNavigate
 import './ProgrammeEntrainement.css';
 
 const ProgrammeEntrainementDetail = () => {
@@ -8,6 +8,7 @@ const ProgrammeEntrainementDetail = () => {
   const [programme, setProgramme] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const navigate = useNavigate(); // Initialize useNavigate
 
   useEffect(() => {
     const fetchProgrammeDetails = async () => {
@@ -32,6 +33,12 @@ const ProgrammeEntrainementDetail = () => {
     return <p className="error">{error}</p>;
   }
 
+  // Function to handle button click
+  const handleFollowProgram = () => {
+    // Redirect to the performance page
+    navigate('/performance');
+  };
+
   return (
     <div className="programme-detail">
       {programme && (
@@ -53,6 +60,11 @@ const ProgrammeEntrainementDetail = () => {
           <p><strong>Date de mise à jour:</strong> {programme.date_mise_a_jour}</p>
           <p><strong>Catégorie ID:</strong> {programme.categorie_id}</p>
           <p><strong>Domaine Sportif ID:</strong> {programme.domaine_sportif_id}</p>
+          
+        
+          <button onClick={handleFollowProgram} className="follow-button">
+            Suivre ce programme
+          </button>
         </>
       )}
     </div>

@@ -56,11 +56,13 @@
 
 .register-redirect {
   text-align: center;
-  margin-top: 15px; /* Add some margin to separate from the button */
+  position: absolute;
+  margin-top: 26rem;
+  
 }
 
 .register-link {
-  color: #22577A; /* Optional: make the link color consistent */
-  cursor: pointer; /* Change cursor to pointer for link */
-  text-decoration: underline; /* Optional: underline the link for better visibility */
+  color: #22577A;
+  cursor: pointer;
+  text-decoration: underline; 
 }

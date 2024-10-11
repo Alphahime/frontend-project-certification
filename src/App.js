@@ -1,5 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AuthProvider } from './context/AuthContext'; // Correction du chemin
 import Home from './pages/Home/Home';
 import CoachList from './components/Coach/CoachList';
 import CoachDetails from './components/Coach/CoachDetails';
@@ -14,7 +15,6 @@ import './App.css';
 
 import CoachsGestion from './components/administrateur/CoachsGestion';
 import ProgrammesGestion from './components/administrateur/ProgrammesGestion';
-import UtilisateursGestion from './components/administrateur/UtilisateursGestion';
 import ArticlesGestion from './components/administrateur/ArticlesGestion';
 import RolesGestion from './components/administrateur/RolesGestion';
 import PlansNutritionnels from './components/administrateur/PlansNutritionnels';
@@ -37,56 +37,92 @@ import DemandeCoaching from './components/DemandeCoaching/DemandeCoaching';
 import AddRecetteForm from './components/administrateur/AddRecetteForm';
 
 import Ressource from './components/Ressource/Ressource';
-import ProtectedRoute from './components/ProtectedRoute'; // Import the ProtectedRoute component
+import ProtectedRoute from './context/ProtectedRoute';
+import Users from './components/administrateur/Users'; 
+import PerformanceDashboard from './components/PerformanceDashboard'; 
+import RolesPermissions from './components/administrateur/RolesPermissions';
+
+import Dashboard from './components/CoachsEspace/Dashboard';
+import Reservations from './components/CoachsEspace/Reservations';
+import Programs from './components/CoachsEspace/Programs';
+import Messages from './components/CoachsEspace/Messages';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/coaches" element={<CoachList />} />
-        <Route path="/coaches/:id" element={<CoachDetails />} />
-        <Route path="/recettes" element={<RecetteListe />} />
-        <Route path="/recettes/:id" element={<RecetteDetail />} />
-        <Route path="/ajouter-recette" element={<RecetteForm />} />
-        
-        {/* Routes for Training Programs */}
-        <Route path="/programmes-entrainement" element={<ProgrammeEntrainementList />} />
-        <Route path="/programmes-entrainement/:id" element={<ProgrammeEntrainementDetail />} />
-        
-        {/* Route for Categories */}
-        <Route path="/categories" element={<CategoriesList />} />
-        
-        {/* Routes for Training Sessions */}
-        <Route path="/seances-entrainement" element={<SeanceEntrainement />} />
-        
-        {/* Administrator Routes */}
-        <Route path="/administrateur/coaches" element={<CoachsGestion />} />
-        <Route path="/administrateur/programmes" element={<ProgrammesGestion />} />
-        <Route path="/administrateur/utilisateurs" element={<UtilisateursGestion />} />
-        <Route path="/administrateur/articles" element={<ArticlesGestion />} />
-        <Route path="/administrateur/roles" element={<RolesGestion />} />
-        <Route path="/administrateur/plans-nutritionnels" element={<PlansNutritionnels />} />
-        <Route path="/administrateur/ajouter-article" element={<ArticleForm />} />
+    <AuthProvider> {/* Wrap your app with AuthProvider */}
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/coaches" element={<CoachList />} />
+          <Route path="/coaches/:id" element={<CoachDetails />} />
+          <Route path="/recettes" element={<RecetteListe />} />
+          <Route path="/recettes/:id" element={<RecetteDetail />} />
+          <Route path="/ajouter-recette" element={<RecetteForm />} />
+          <Route 
+            path="/administrateur/ajouter-article" 
+            element={<ArticleForm />} allowedRoles={['admin']} 
+          />
 
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/blog/:id" element={<ArticleDetails />} />
-        <Route path="/administrateur/programmes-entrainement" element={<ProgrammeList />} />
-        <Route path="/ajouter-programme" element={<ProgrammeFormAdd />} />
+          {/* Routes pour les programmes d'entraînement */}
+          <Route path="/programmes-entrainement" element={<ProgrammeEntrainementList />} />
+          <Route path="/programmes-entrainement/:id" element={<ProgrammeEntrainementDetail />} />
+          
+          {/* Route pour les catégories */}
+          <Route path="/categories" element={<CategoriesList />} />
+          
+          {/* Routes pour les séances d'entraînement */}
+          <Route path="/seances-entrainement" element={<SeanceEntrainement />} />
+          
+          {/* Routes administratives protégées */}
+          <Route 
+            path="/administrateur/coaches" 
+            element={<CoachsGestion />} allowedRoles={['admin']} 
+          />
+          <Route 
+            path="/administrateur/programmes" 
+            element={<ProgrammesGestion />} allowedRoles={['admin']} 
+          />
+          <Route 
+            path="/administrateur/articles" 
+            element={<ArticlesGestion />} allowedRoles={['admin']} 
+          />
+          <Route 
+            path="/administrateur/roles" 
+            element={<RolesGestion />} allowedRoles={['admin']} 
+          />
+          <Route 
+            path="/administrateur/plans-nutritionnels" 
+            element={<PlansNutritionnels />} allowedRoles={['admin']} 
+          />
 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<ArticleDetails />} />
+          <Route path="/administrateur/programmes-entrainement" element={<ProgrammeList />} />
+          <Route path="/ajouter-programme" element={<ProgrammeFormAdd />} />
 
-        <Route path="/suivi-seance" element={<SuiviSeance />} />
-        <Route path="/profil-utilisateur" element={<ProfilUtilisateur />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
-        {/* Protected Route for DemandeCoaching */}
-        <Route path="/demande-coaching" element={<ProtectedRoute element={<DemandeCoaching />} />} />
+          <Route path="/suivi-seance" element={<SuiviSeance />} />
+          <Route path="/profil-utilisateur" element={<ProfilUtilisateur />} />
+
+          {/* Route protégée pour DemandeCoaching */}
+          <Route path="/demande-coaching"  element={<DemandeCoaching />} allowedRoles={['user', 'admin']} />
+
+          <Route path="/administrateur/ajouter-recette"  element={<AddRecetteForm />} allowedRoles={['admin']} />
+          <Route path="/ressources" element={<Ressource />} />
+
+          <Route path="/administrateur/utilisateurs"  element={<Users />} allowedRoles={['admin']}  /> 
+          <Route path="/performance" element={<PerformanceDashboard />} />
+          <Route path="/administrateur/roles-permissions" element={<ProtectedRoute element={<RolesPermissions />} allowedRoles={['admin']} />} />
         
-        <Route path="/administrateur/ajouter-recette" element={<AddRecetteForm />} />
-        <Route path="/ressources" element={<Ressource />} />
-      </Routes>
-    </Router>
+          <Route path="/coachs" element={<Dashboard />} />
+          <Route path="/coachs/gestion-reservations" element={<Reservations />} />
+          <Route path="/coachs/gestion-programmes" element={<Programs />} />
+          <Route path="/coachs/gestion-messages" element={<Messages />} />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
 

@@ -64,7 +64,6 @@ const ArticlesGestion = () => {
       <Sidebar />
       <div className="content">
         <div className="header">
-          <h1>Gestion des Articles</h1>
           <Link to="/administrateur/ajouter-article" className="btn-add-article">
             <FaPlusCircle /> Ajouter un article
           </Link>

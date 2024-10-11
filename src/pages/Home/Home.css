@@ -41,6 +41,8 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  
+  
 }
 .auth-button button{
   padding: 0.5rem 2rem;
@@ -48,6 +50,7 @@
   border: 1px solid #80ED99;
   color: white;
   border-radius: 0.4rem;
+
 }
 
 
