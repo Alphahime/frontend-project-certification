@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Sidebar from './Sidebar';
 import './ArticlesGestion.css';
-import { FaFileAlt, FaCalendarAlt, FaPlusCircle, FaTrashAlt } from 'react-icons/fa';
+import { FaFileAlt, FaCalendarAlt, FaPlusCircle, FaTrashAlt, FaEdit } from 'react-icons/fa'; // Import the edit and trash icons
 
 const ArticlesGestion = () => {
   const [articles, setArticles] = useState([]);
@@ -98,9 +98,14 @@ const ArticlesGestion = () => {
               )}
               <h4>{article.nom}</h4>
               <p>{article.description.length > 100 ? `${article.description.substring(0, 100)}...` : article.description}</p>
-              <button onClick={() => softDeleteArticle(article.id)} className="btn btn-danger">
-                <FaTrashAlt /> Supprimer
-              </button>
+              <div className="article-actions">
+                <Link to={`/administrateur/modifier-article/${article.id}`} className="action-icon">
+                  <FaEdit />
+                </Link>
+                <span className="action-icon" onClick={() => softDeleteArticle(article.id)}>
+                  <FaTrashAlt />
+                </span>
+              </div>
             </div>
           ))}
         </div>

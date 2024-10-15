@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Users.css';
 import Sidebar from './Sidebar';
-import { Line } from 'react-chartjs-2'; // Import the chart component
+import { Line } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
   LineElement,
@@ -10,11 +10,11 @@ import {
   Title,
   Tooltip,
   Legend,
-  Filler,
+  CategoryScale,  // Import CategoryScale for string labels on the x-axis
 } from 'chart.js';
 
-// Register Chart.js elements
-ChartJS.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, Filler);
+// Register Chart.js components
+ChartJS.register(LineElement, PointElement, LinearScale, Title, Tooltip, Legend, CategoryScale);
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -22,19 +22,17 @@ const Users = () => {
   const [error, setError] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
 
-  // State to store chart data
+  // State for storing chart data
   const [chartData, setChartData] = useState({
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], // Example months
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],  // Example months
     datasets: [
       {
-        label: 'Utilisateurs Mensuels',
-        data: [10, 20, 30, 40, 50, 60, 70], // Replace with your real data
+        label: 'Monthly Users',
+        data: [10, 20, 30, 40, 50, 60, 70],  // Replace with your real data
         borderColor: 'rgba(75, 192, 192, 1)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
-        fill: true, // Fill under the line
-        tension: 0.4, // Smooth the curve
-        pointRadius: 5, // Size of points
-        pointHoverRadius: 8, // Size of points on hover
+        tension: 0.4,  // Adds smooth curves to the line
+        pointRadius: 5, // Makes points bigger
       },
     ],
   });
@@ -76,12 +74,12 @@ const Users = () => {
     <div className="d-flex">
       <Sidebar className="sidebar" />
       <div className="users-container">
-        <h1>Liste des Utilisateurs</h1>
-        <input 
-          type="text" 
-          placeholder="Rechercher un utilisateur" 
-          value={searchTerm} 
-          onChange={(e) => setSearchTerm(e.target.value)} 
+       
+        <input
+          type="text"
+          placeholder="Search user"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           className="search-bar"
         />
         <table className="users-table">
@@ -91,8 +89,8 @@ const Users = () => {
               <th>Prénom</th>
               <th>Email</th>
               <th>Téléphone</th>
-              <th>Localisation</th>
-              <th>Photo de Profil</th>
+              <th>localisation</th>
+              <th>Profile</th>
             </tr>
           </thead>
           <tbody>
@@ -109,47 +107,45 @@ const Users = () => {
           </tbody>
         </table>
 
-        {/* Add the chart here */}
-        <h2>Analyse des Utilisateurs</h2>
-        <Line 
-          data={chartData} 
-          options={{
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                display: true,
-                position: 'top',
-              },
-              tooltip: {
-                mode: 'index',
-                intersect: false,
+        {/* Add the chart */}
+        <h2>User Analytics</h2>
+        <Line data={chartData} options={{
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: 'Monthly Active Users',
+              font: {
+                size: 18,
               },
             },
-            scales: {
-              x: {
-                title: {
-                  display: true,
-                  text: 'Mois',
-                },
-                grid: {
-                  display: false,
-                },
+            legend: {
+              display: true,
+              position: 'top',
+            },
+          },
+          scales: {
+            x: {
+              grid: {
+                display: false,
               },
-              y: {
-                title: {
-                  display: true,
-                  text: 'Nombre d\'Utilisateurs',
-                },
-                beginAtZero: true,
-                grid: {
-                  color: 'rgba(255, 255, 255, 0.3)', // Custom grid line color
+              ticks: {
+                font: {
+                  size: 14,
                 },
               },
             },
-          }} 
-          style={{ height: '400px', width: '100%' }} // Chart dimensions
-        />
+            y: {
+              beginAtZero: true,
+              ticks: {
+                stepSize: 10,
+                font: {
+                  size: 14,
+                },
+              },
+            },
+          },
+        }} />
       </div>
     </div>
   );

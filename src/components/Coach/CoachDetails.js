@@ -2,10 +2,14 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import JitsiVideoCall from '../JitsiVideoCall'; 
-import './CoachList.css'; 
 import ChatBoard from '../ChatBoard'; 
 import Header from '../Header'; 
 import Footer from '../Footer'; 
+import Calendar from 'react-calendar';  // Import calendar library
+import 'react-calendar/dist/Calendar.css';  // Import calendar styles
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVideo, faEnvelope, faCheckCircle, faCalendarAlt, faAward, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
+import './CoachList.css'; 
 
 const CoachDetails = () => {
     const { id } = useParams();
@@ -15,9 +19,10 @@ const CoachDetails = () => {
     const [showVideoCall, setShowVideoCall] = useState(false);
     const [roomName, setRoomName] = useState('');
     const [showChatBoard, setShowChatBoard] = useState(false);
+    const [selectedDate, setSelectedDate] = useState(new Date());
 
     const handleStartVideoCall = () => {
-        setRoomName(`coach-${Date.now()}`); 
+        setRoomName(`coach-${Date.now()}`);
         setShowVideoCall(true); 
     };
 
@@ -26,17 +31,13 @@ const CoachDetails = () => {
     };
 
     const handleBookSession = () => {
-        // Implement the logic to book a session
-        // This could involve redirecting to a booking page,
-        // opening a modal, or making an API call.
-        alert('Session réservée !'); // Placeholder alert, replace with actual logic
+        alert('Session réservée !');
     };
 
     useEffect(() => {
         const fetchCoachDetails = async () => {
             try {
                 const response = await axios.get(`http://127.0.0.1:8000/api/coaches/${id}`);
-                console.log(response.data);
                 setCoach(response.data.coach); 
                 setLoading(false);
             } catch (err) {
@@ -44,7 +45,6 @@ const CoachDetails = () => {
                 setLoading(false);
             }
         };
-
         fetchCoachDetails();
     }, [id]);
 
@@ -56,6 +56,16 @@ const CoachDetails = () => {
             <Header />
             {coach && (
                 <div className="banner-coach-details">
+                    <div className="banner-left">
+                        <h1>{coach.user?.nom} {coach.user?.prenom}</h1>
+                        <div className="validation-icon">
+                            <FontAwesomeIcon icon={faCheckCircle} style={{ color: '#80ED99' }} />
+                            <span>Profil vérifié</span>
+                        </div>
+                        <button onClick={handleShowChatBoard} className="send-message-button">
+                            <FontAwesomeIcon icon={faEnvelope} /> Envoyer un message
+                        </button>
+                    </div>
                     <div className="banner-right">
                         <img 
                             className="coach-profile-photo" 
@@ -64,23 +74,14 @@ const CoachDetails = () => {
                         />
                         <p>{coach.experience}</p>
                     </div>
-                    <div className="banner-left">
-                        <h1>{coach.user?.nom} {coach.user?.prenom}</h1>
-                        <div className="validation-icon">
-                            <i className="fas fa-check-circle"></i>
-                            <span>Profil vérifié</span>
-                        </div>
-                        <button onClick={handleShowChatBoard} className="send-message-button">
-                            Envoyer un message
-                        </button>
-                    </div>
                 </div>
             )}
 
             <div className="coach-details-container">
                 <div className="details-grid">
+                    {/* Services with icons */}
                     <div className="details-card">
-                        <h4>Services</h4>
+                        <h4><FontAwesomeIcon icon={faAward} /> Services</h4>
                         {coach.services ? (
                             coach.services.split(',').map((service, index) => (
                                 <div key={index}>
@@ -92,8 +93,9 @@ const CoachDetails = () => {
                         )}
                     </div>
 
+                    {/* Diplomas with icons */}
                     <div className="details-card">
-                        <h4>Diplômes</h4>
+                        <h4><FontAwesomeIcon icon={faUserGraduate} /> Diplômes</h4>
                         {coach.diplomes ? (
                             coach.diplomes.split(',').map((diplome, index) => (
                                 <div key={index}>
@@ -105,25 +107,38 @@ const CoachDetails = () => {
                         )}
                     </div>
 
+                    {/* Availability section */}
                     <div className="details-card">
-                        <h4>Disponibilités</h4>
+                        <h4><FontAwesomeIcon icon={faCalendarAlt} /> Disponibilités</h4>
                         {coach.disponibilites ? (
-                            coach.disponibilites.split(',').map((disponibilite, index) => (
-                                <div key={index}>
-                                    <p>{disponibilite.trim()}</p>
-                                </div>
-                            ))
+                            <Calendar 
+                                onChange={setSelectedDate} 
+                                value={selectedDate} 
+                                tileClassName={({ date }) => {
+                                    const disponibilitesArray = Array.isArray(coach.disponibilites)
+                                        ? coach.disponibilites
+                                        : (coach.disponibilites || '').split(',').map(date => date.trim());
+                                    return disponibilitesArray.includes(date.toDateString()) ? 'available-date' : null;
+                                }}
+                                tileDisabled={({ date }) => {
+                                    const disponibilitesArray = Array.isArray(coach.disponibilites)
+                                        ? coach.disponibilites
+                                        : (coach.disponibilites || '').split(',').map(date => date.trim());
+                                    return !disponibilitesArray.includes(date.toDateString());
+                                }} 
+                            />
                         ) : (
                             <p>Aucune disponibilité renseignée.</p>
                         )}
                     </div>
 
+                    {/* Location and video call */}
                     <div className="details-card">
                         <h4>Lieu</h4>
                         <p>{coach.lieu}</p>
                         <div className="button-container">
                             <button onClick={handleStartVideoCall} className="start-video-call-button">
-                                Démarrer un appel vidéo
+                                <FontAwesomeIcon icon={faVideo} /> Démarrer un appel vidéo
                             </button>
                             <button onClick={handleBookSession} className="book-session-button">
                                 Réserver une séance
@@ -135,11 +150,9 @@ const CoachDetails = () => {
             </div>
 
             {showChatBoard && <ChatBoard coachId={id} />}
-
-          
             <Footer />
         </div>
     );
 };
 
-export default CoachDetails;
+export default CoachDetails;  

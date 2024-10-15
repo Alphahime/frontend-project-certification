@@ -36,7 +36,7 @@ const CategoriesList = () => {
                 </div>
             ))}
 
-            {/* Afficher les programmes d'entraînement si une catégorie est sélectionnée */}
+           
             {selectedCategory && (
                 <div className="programs-container">
                     <h3>Programmes d'Entraînement pour {selectedCategory.nom}</h3>

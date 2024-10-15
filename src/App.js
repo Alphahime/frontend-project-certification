@@ -46,7 +46,7 @@ import Dashboard from './components/CoachsEspace/Dashboard';
 import Reservations from './components/CoachsEspace/Reservations';
 import Programs from './components/CoachsEspace/Programs';
 import Messages from './components/CoachsEspace/Messages';
-
+import ModifierArticle from './components/administrateur/ModifierArticle';
 function App() {
   return (
     <AuthProvider> {/* Wrap your app with AuthProvider */}
@@ -120,6 +120,7 @@ function App() {
           <Route path="/coachs/gestion-reservations" element={<Reservations />} />
           <Route path="/coachs/gestion-programmes" element={<Programs />} />
           <Route path="/coachs/gestion-messages" element={<Messages />} />
+          <Route path="/administrateur/modifier-article/:id" element={<ModifierArticle />} /> 
         </Routes>
       </Router>
     </AuthProvider>

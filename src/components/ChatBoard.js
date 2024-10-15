@@ -5,12 +5,12 @@ import './ChatBoard.css';
 const ChatBoard = ({ coachId }) => {
     const [messages, setMessages] = useState([]);
 
-    // Fonction pour ajouter un nouveau message
+   
     const addMessage = (messageText) => {
         const newMessage = {
             id: messages.length + 1,
             text: messageText,
-            sender: 'user', // On peut gérer plusieurs types d'utilisateurs ici
+            sender: 'user', 
             timestamp: new Date(),
         };
         setMessages([...messages, newMessage]);
@@ -18,7 +18,7 @@ const ChatBoard = ({ coachId }) => {
 
     return (
         <div className="chat-board">
-            <h3>Chat avec votre coach</h3>
+            <h4>Envoyer un message à votre coach</h4>
             <div className="message-list">
                 {messages.map((message) => (
                     <div key={message.id} className="message">

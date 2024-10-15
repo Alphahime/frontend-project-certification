@@ -8,7 +8,10 @@ const DemandeCoachingForm = ({ onSubmit }) => {
   const [services, setServices] = useState('');
   const [galeriePhotos, setGaleriePhotos] = useState([]);
   const [diplomes, setDiplomes] = useState('');
-  const [disponibilites, setDisponibilites] = useState('');
+  const [jourDebut, setJourDebut] = useState('lundi');
+  const [jourFin, setJourFin] = useState('vendredi');
+  const [heureDebut, setHeureDebut] = useState('09:00');
+  const [heureFin, setHeureFin] = useState('17:00');
   const [profilVerifie, setProfilVerifie] = useState(false);
 
   const handleSubmit = (e) => {
@@ -35,7 +38,7 @@ const DemandeCoachingForm = ({ onSubmit }) => {
     }
 
     formData.append('diplomes', diplomes);
-    formData.append('disponibilites', disponibilites);
+    formData.append('disponibilites', `Du ${jourDebut} au ${jourFin} de ${heureDebut} à ${heureFin}`); // Intervalle de disponibilités
     formData.append('profil_verifie', profilVerifie ? 1 : 0); // Convertir en entier (1 ou 0)
 
     onSubmit(formData);
@@ -105,13 +108,50 @@ const DemandeCoachingForm = ({ onSubmit }) => {
       />
       
       <label htmlFor="disponibilites">Disponibilités :</label>
-      <input
-        type="text"
-        id="disponibilites"
-        value={disponibilites}
-        onChange={(e) => setDisponibilites(e.target.value)}
-        required
-      />
+      <div>
+        <label htmlFor="jourDebut">Du :</label>
+        <select
+          id="jourDebut"
+          value={jourDebut}
+          onChange={(e) => setJourDebut(e.target.value)}
+        >
+          <option value="lundi">Lundi</option>
+          <option value="mardi">Mardi</option>
+          <option value="mercredi">Mercredi</option>
+          <option value="jeudi">Jeudi</option>
+          <option value="vendredi">Vendredi</option>
+          <option value="samedi">Samedi</option>
+          <option value="dimanche">Dimanche</option>
+        </select>
+        <label htmlFor="jourFin">Au :</label>
+        <select
+          id="jourFin"
+          value={jourFin}
+          onChange={(e) => setJourFin(e.target.value)}
+        >
+          <option value="lundi">Lundi</option>
+          <option value="mardi">Mardi</option>
+          <option value="mercredi">Mercredi</option>
+          <option value="jeudi">Jeudi</option>
+          <option value="vendredi">Vendredi</option>
+          <option value="samedi">Samedi</option>
+          <option value="dimanche">Dimanche</option>
+        </select>
+        <label htmlFor="heureDebut">De :</label>
+        <input
+          type="time"
+          id="heureDebut"
+          value={heureDebut}
+          onChange={(e) => setHeureDebut(e.target.value)}
+        />
+        <label htmlFor="heureFin">À :</label>
+        <input
+          type="time"
+          id="heureFin"
+          value={heureFin}
+          onChange={(e) => setHeureFin(e.target.value)}
+        />
+      </div>
       
       <label htmlFor="profil_verifie">Profil Vérifié :</label>
       <input

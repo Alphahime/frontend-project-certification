@@ -12,8 +12,8 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('token'); // Optionnel : supprimer le token lors de la déconnexion
-    localStorage.removeItem('user'); // Optionnel : supprimer les données utilisateur
+    localStorage.removeItem('token'); 
+    localStorage.removeItem('user'); 
   };
 
   return (

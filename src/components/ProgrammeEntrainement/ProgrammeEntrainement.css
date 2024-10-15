@@ -3,10 +3,10 @@
   width: 100%;
   padding: 40px;
   background-color: #f0f0f0;
-  margin-top: 20px; /* Separate from banner */
+  margin-top: 20px; 
 }
 
-/* Banner section */
+
 .espace-banniere {
   position: relative;
   width: 100%;
@@ -31,11 +31,11 @@
 }
 
 .banner-text {
-  position: relative; /* Ensure the text is above the overlay */
+  position: relative; 
   color: white;
   font-size: 48px;
   font-weight: bold;
-  z-index: 1; /* Bring the text to the front */
+  z-index: 1; 
 }
 
 
@@ -53,7 +53,7 @@
   font-weight: bold;
 }
 
-/* Grid for programmes */
+
 .programme-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -61,7 +61,7 @@
   margin-top: 20px;
 }
 
-/* Programme card */
+
 .programme-card {
   background: linear-gradient(to bottom, #22577A, #80ED99);
   border-radius: 10px;
@@ -77,7 +77,7 @@
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Programme image */
+
 .programme-image {
   width: 100%;
   height: 180px;
@@ -86,14 +86,13 @@
   margin-bottom: 15px;
 }
 
-/* Programme title */
+
 .programme-card h3 {
   font-size: 1.5rem;
   margin-bottom: 10px;
   color: #333;
 }
 
-/* View button */
 .programme-card button {
   background-color: #4CAF50;
   color: white;
@@ -107,7 +106,7 @@
   background-color: #45a049;
 }
 
-/* Pagination buttons */
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -129,7 +128,7 @@
   cursor: not-allowed;
 }
 
-/* Next section */
+
 .next-section {
   margin-top: 50px;
   display: flex;
@@ -247,32 +246,32 @@
 }
 
 .programme-detail {
-  background-color: #f5f5f5; /* Light grey background for contrast */
+  background-color: #f5f5f5; 
   padding: 20px;
   border-radius: 8px;
-  max-width: 600px; /* Limit the width of the detail view */
-  margin: auto; /* Center the component */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  max-width: 600px; 
+  margin: auto; 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
 }
 
 .programme-detail h2 {
-  color: #22577A; /* Title color */
-  margin-bottom: 10px; /* Space below the title */
+  color: #22577A;
+  margin-bottom: 10px; 
 }
 
 .programme-detail p {
-  font-size: 16px; /* Base font size */
-  line-height: 1.5; /* Line height for readability */
-  margin: 5px 0; /* Space between paragraphs */
+  font-size: 16px; 
+  line-height: 1.5; 
+  margin: 5px 0; 
 }
 
 .programme-detail strong {
-  color: #80ED99; /* Emphasize labels with soft green */
+  color: #80ED99; 
 }
 
 .programme-detail img {
-  width: 100%; /* Responsive image */
-  border-radius: 8px; /* Rounded corners for the image */
+  width: 100%; 
+  border-radius: 8px; 
   margin-bottom: 15px;
 }
 
