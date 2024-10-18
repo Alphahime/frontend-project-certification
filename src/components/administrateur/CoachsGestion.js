@@ -45,11 +45,35 @@ const CoachsGestion = () => {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   const handleAccept = (id) => {
-    console.log(`Coach ${id} accepté`);
+    fetch(`http://127.0.0.1:8000/api/coaches/accept-coach/${id}`, {
+      method: 'Put',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log(`Coach ${id} accepté`);
+        // Optionally, update the UI to reflect the accepted coach
+      }
+    })
+    .catch(error => console.error('Error:', error));
   };
 
   const handleReject = (id) => {
-    console.log(`Coach ${id} rejeté`);
+    fetch(`http://127.0.0.1:8000/api/coaches/reject-coach/${id}`, {
+      method: 'Put',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+    .then(response => {
+      if (response.ok) {
+        console.log(`Coach ${id} rejeté`);
+        // Optionally, update the UI to reflect the rejected coach
+      }
+    })
+    .catch(error => console.error('Error:', error));
   };
 
   return (
@@ -121,7 +145,6 @@ const CoachsGestion = () => {
                   <td>{coach.lieu}</td>
                   <td>
                     {coach.disponibilites ? (
-                      // Tentative d'analyse uniquement si les disponibilités sont valides JSON
                       (() => {
                         try {
                           const disponibilites = JSON.parse(coach.disponibilites);

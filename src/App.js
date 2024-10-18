@@ -47,6 +47,8 @@ import Reservations from './components/CoachsEspace/Reservations';
 import Programs from './components/CoachsEspace/Programs';
 import Messages from './components/CoachsEspace/Messages';
 import ModifierArticle from './components/administrateur/ModifierArticle';
+import CoachFinder from './components/Coach/CoachFinder';
+import FilteredCoachList from './components/Coach/FilteredCoachList';
 function App() {
   return (
     <AuthProvider> {/* Wrap your app with AuthProvider */}
@@ -121,6 +123,8 @@ function App() {
           <Route path="/coachs/gestion-programmes" element={<Programs />} />
           <Route path="/coachs/gestion-messages" element={<Messages />} />
           <Route path="/administrateur/modifier-article/:id" element={<ModifierArticle />} /> 
+          <Route path="/trouver-coach" element={<CoachFinder />} /> {/* Route for CoachFinder */}
+          <Route path="/filtered-coaches" element={<FilteredCoachList />} />
         </Routes>
       </Router>
     </AuthProvider>

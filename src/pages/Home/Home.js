@@ -21,7 +21,9 @@ function Home() {
       <Header />
     
       {/* Bannière avec image de fond */}
+      
       <div className="banner-placeholder">
+      <div className='banner-color'>
         <h1 className="text-center">Vivez les merveilles du sport chez vous</h1>
      
         <div className='auth-button'>
@@ -31,7 +33,7 @@ function Home() {
 
         {/* Espace de Recherche */}
         <div className='espace-recherche'>
-          <select className="search-inputs">
+          <select className="search-inputs-coach">
             <option value="musculation">Musculation</option>
             <option value="fitness">Fitness</option>
             <option value="preparation-physique">Préparation physique</option>
@@ -39,7 +41,7 @@ function Home() {
 
           <input
             type="text"
-            className="search-input"
+            className="search-inputs-coach"
             placeholder="Rechercher par ville"
           />
 
@@ -48,7 +50,7 @@ function Home() {
           </button>
         </div>
       </div>
-
+      </div>
       {/* Section Alflux Présentation */}
       <h2 className="text-center">Pourquoi choisir Alflux ?</h2>
       
@@ -102,27 +104,27 @@ function Home() {
 
      {/* Section Nos Programmes */}
      <div className='trait-bleu'></div>
-<h2 className="text-center">Nos programmes d'entraînement</h2>
+<h2 className="text-center">Nos profils coachs</h2>
 <div className="nos-programmes-container">
   {/* Card Musculation */}
   <div className="program-cards">
   <div className="program-title">Musculation</div>
     <img src={musculationImage} alt="Musculation" className="program-image" />
-    <button className='button-info'>En savoir plus</button>
+    
   </div>
 
   {/* Card Fitness */}
   <div className="program-cards">
   <div className="program-title">Fitness</div>
     <img src={fitnessImage} alt="Fitness" className="program-image" />
-   <button className='button-info'>En savoir plus</button>
+   
   </div>
 
   {/* Card Préparation Physique */}
   <div className="program-cards">
   <div className="program-title">Préparation Physique</div>
     <img src={preparationImage} alt="Préparation Physique" className="program-image" />
-    <button className='button-info'>En savoir plus</button>
+    
   </div>
 </div>
 
@@ -226,35 +228,15 @@ function Home() {
   </div>
 </div>
       </div>
+      {/* Add the new button to find a coach */}
       <div className='contain-button'>
-      <button className='search-coach'>Trouver votre coach</button>
+        <button className='search-coach' onClick={() => navigate('/trouver-coach')}>
+          Trouver votre coach
+        </button>
       </div>
-       {/* New Section - Découvrez nos Recettes Saines */}
-       <h2 className="text-center">Découvrez nos Recettes Saines</h2>
-      <div className="recettes-container">
-        {/* First Recipe Card */}
-        <div className="recette-card">
-          <img src={fruitSaladImage} alt="Salade de fruits" className="recette-image" />
-          <h4>Recettes salade de fruits</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam sagittis aliquam Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-          <button className="recette-button">Lire la recette</button>
-        </div>
-
-        {/* Second Recipe Card */}
-        <div className="recette-card">
-          <img src={anotherRecipeImage} alt="Salade" className="recette-image" />
-          <h4>Recettes salade</h4>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quam sagittis aliquam Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-          <button className="recette-button">Lire la recette</button>
-        </div>
-      
-      </div>
+    
   
-      <div className="testimonial-pagination">
-        <button className="pagination-dot"></button>
-        <button className="pagination-dot"></button>
-        <button className="pagination-dot"></button>
-      </div>
+  
       <Footer />
 </div>
 

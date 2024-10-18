@@ -33,7 +33,7 @@ const Login = () => {
             navigate('/administrateur/coaches');
             break;
           case 'coach':
-            navigate('/client-Dashboard');
+            navigate('/coachs');
             break;
           case 'client':
             navigate('/demande-coaching'); 

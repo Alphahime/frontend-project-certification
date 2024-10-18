@@ -5,8 +5,8 @@ import JitsiVideoCall from '../JitsiVideoCall';
 import ChatBoard from '../ChatBoard'; 
 import Header from '../Header'; 
 import Footer from '../Footer'; 
-import Calendar from 'react-calendar';  // Import calendar library
-import 'react-calendar/dist/Calendar.css';  // Import calendar styles
+import Calendar from 'react-calendar';  
+import 'react-calendar/dist/Calendar.css';  
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVideo, faEnvelope, faCheckCircle, faCalendarAlt, faAward, faUserGraduate } from '@fortawesome/free-solid-svg-icons';
 import './CoachList.css'; 
@@ -19,7 +19,8 @@ const CoachDetails = () => {
     const [showVideoCall, setShowVideoCall] = useState(false);
     const [roomName, setRoomName] = useState('');
     const [showChatBoard, setShowChatBoard] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(new Date());
+    const [selectedDate, setSelectedDate] = useState(new Date()); 
+    const [selectedTime, setSelectedTime] = useState(''); 
 
     const handleStartVideoCall = () => {
         setRoomName(`coach-${Date.now()}`);
@@ -30,8 +31,39 @@ const CoachDetails = () => {
         setShowChatBoard(true);
     };
 
-    const handleBookSession = () => {
-        alert('Session réservée !');
+    const handleBookSession = async () => {
+        if (!selectedTime) {
+            alert('Veuillez sélectionner une heure de réservation.');
+            return;
+        }
+
+        const reservationDetails = {
+            coachId: id,
+            date: selectedDate.toISOString().split('T')[0], // Format YYYY-MM-DD
+            time: selectedTime,
+        };
+
+        try {
+            const token = localStorage.getItem('authToken'); // Récupérez le jeton d'authentification
+
+            // Vérifiez si l'utilisateur est authentifié
+            if (!token) {
+                alert('Veuillez vous connecter pour réserver une session.');
+                return;
+            }
+
+            // Requête POST pour créer la réservation avec l'authentification
+            await axios.post('http://127.0.0.1:8000/api/reservations', reservationDetails, {
+                headers: {
+                    Authorization: `Bearer ${token}` // Ajoutez le jeton au header
+                }
+            });
+
+            alert(`Session réservée pour le ${selectedDate.toDateString()} à ${selectedTime}`);
+        } catch (err) {
+            console.error('Erreur lors de la réservation :', err);
+            alert(`Erreur lors de la réservation : ${err.message}`);
+        }
     };
 
     useEffect(() => {
@@ -47,6 +79,13 @@ const CoachDetails = () => {
         };
         fetchCoachDetails();
     }, [id]);
+
+    const isDateAvailable = (date) => {
+        // Check if the date is available based on coach's disponibilites
+        if (!coach?.disponibilites) return true; // Return true if no disponibilites are set
+        const availableDates = coach.disponibilites.split(',').map(d => new Date(d.trim()));
+        return availableDates.some(d => d.toDateString() === date.toDateString());
+    };
 
     if (loading) return <p>Chargement des détails du coach...</p>;
     if (error) return <p>Erreur : {error}</p>;
@@ -114,22 +153,22 @@ const CoachDetails = () => {
                             <Calendar 
                                 onChange={setSelectedDate} 
                                 value={selectedDate} 
-                                tileClassName={({ date }) => {
-                                    const disponibilitesArray = Array.isArray(coach.disponibilites)
-                                        ? coach.disponibilites
-                                        : (coach.disponibilites || '').split(',').map(date => date.trim());
-                                    return disponibilitesArray.includes(date.toDateString()) ? 'available-date' : null;
-                                }}
-                                tileDisabled={({ date }) => {
-                                    const disponibilitesArray = Array.isArray(coach.disponibilites)
-                                        ? coach.disponibilites
-                                        : (coach.disponibilites || '').split(',').map(date => date.trim());
-                                    return !disponibilitesArray.includes(date.toDateString());
-                                }} 
+                                tileDisabled={({ date }) => !isDateAvailable(date)} // Disable unavailable dates
                             />
                         ) : (
                             <p>Aucune disponibilité renseignée.</p>
                         )}
+
+                        {/* Time input for booking */}
+                        <div className="time-selection">
+                            <label htmlFor="time">Sélectionnez l'heure :</label>
+                            <input 
+                                type="time" 
+                                id="time" 
+                                value={selectedTime} 
+                                onChange={(e) => setSelectedTime(e.target.value)} 
+                            />
+                        </div>
                     </div>
 
                     {/* Location and video call */}
@@ -155,4 +194,4 @@ const CoachDetails = () => {
     );
 };
 
-export default CoachDetails;  
+export default CoachDetails;

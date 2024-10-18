@@ -1,0 +1,137 @@
+.coach-finder-form .question-step {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.coach-finder-form .navigation-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.coach-finder-form .progress-indicator {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.coach-finder-form .progress-circle {
+    width: 80px;
+    height: 80px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+    color: #22577A;
+    position: relative;
+    background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+}
+
+.coach-finder-form .progress-circle.active {
+    background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+    color: black;
+    font-size: 30px;
+    font-weight: 800;
+}
+
+.coach-finder-form .step-title {
+    color: #22577A;
+    font-weight: bold;
+}
+
+.coach-finder-form .button-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.coach-finder-form .button-option {
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: white;
+    color: #22577A;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 14px;
+    border: 2px solid #80ED99;
+    
+}
+
+.coach-finder-form .button-option.active {
+    background-color: #22577A;
+    color: white;
+    border: none;
+    
+}
+
+.coach-finder-form .boutton-arriere {
+    background-color: #22577A;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.coach-finder-form .boutton-arriere:hover {
+    background-color: #22577A;
+}
+
+.coach-finder-form .space {
+    background: linear-gradient(to bottom, #bfe1ce8b, #80ED99);
+}
+
+.coach-finder-form .step-description {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #22577A;
+    text-align: center;
+   
+}
+
+.coach-finder-form .trouver-votre-coach {
+    width: 10rem;
+    height: 2rem;
+    background-color: #80ED99;
+    color: #22577A;
+    border: none;
+    border-radius: 0.25rem;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.coach-finder-form .trouver-votre-coach:hover {
+    background-color: #57C785; 
+}
+
+.coach-finder-form .calendar-input {
+    width: 20%;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: white;
+    color: #22577A;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.coach-finder-form .calendar-input:hover {
+    background-color: #E5F5EB;
+    border-color: #57C785;
+}
+.boutton-coach{
+    padding: 1rem 0.5re;
+}

@@ -10,7 +10,7 @@ const Register = () => {
   const [motDePasseConfirmation, setMotDePasseConfirmation] = useState('');
   const [telephone, setTelephone] = useState('');
   const [localisation, setLocalisation] = useState('');
-  const [role, setRole] = useState('client'); // Rôle par défaut
+  const [role] = useState('client'); // Rôle défini par défaut à "client"
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
@@ -37,7 +37,7 @@ const Register = () => {
           mot_de_passe_confirmation: motDePasseConfirmation, 
           telephone, 
           localisation,
-          role 
+          role // On envoie toujours "client" comme rôle
         }),
       });
 
@@ -45,20 +45,16 @@ const Register = () => {
 
       if (response.ok) {
         navigate('/login'); 
-        // Redirection vers la page de connexion après l'inscription
       } else {
-        setError(data.error ? data.error : 'Erreur d\'inscription.'); 
-        //  à jour le message d'erreur
+        setError(data.error || 'Erreur d\'inscription.'); 
       }
     } catch (err) {
       setError('Erreur de connexion au serveur.'); 
-      // Gestion l'erreur de connexion
     }
   };
 
   return (
     <div className="register-container">
-   
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleRegister} className="formulaire-inscription">
         <div className="form-rows">
@@ -138,7 +134,6 @@ const Register = () => {
               required
             />
           </div>
-         
         </div>
         <button type="submit" className="register-button">S'inscrire</button>
       </form>
