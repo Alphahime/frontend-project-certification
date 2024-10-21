@@ -391,7 +391,7 @@
 .react-calendar {
     border: none;
     width: 100%;
-    background-color: #ffffff; /* Couleur de fond */
+    background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
 }
@@ -480,4 +480,29 @@
 /* Ajustements pour la partie inférieure du calendrier */
 .react-calendar__month-view__days {
     padding: 10px; /* Espacement autour des jours */
+}
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.page-link {
+    padding: 10px 15px;
+    margin: 0 5px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.page-link.active {
+    background-color: #007bff;
+    color: white;
+    border: 1px solid #007bff;
+}
+
+.page-link:hover {
+    background-color: #007bff;
+    color: white;
 }

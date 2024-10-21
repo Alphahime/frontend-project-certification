@@ -9,16 +9,16 @@ const CoachList = () => {
     const [coaches, setCoaches] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [currentPage, setCurrentPage] = useState(1); // State for current page
+    const coachesPerPage = 3; // Show 3 coaches per page
 
     useEffect(() => {
         const fetchCoaches = async () => {
             try {
                 const response = await axios.get('http://127.0.0.1:8000/api/coaches');
                 
-                console.log(response.data);
-                
                 if (Array.isArray(response.data)) {
-                    setCoaches(response.data);
+                    setCoaches(response.data.reverse()); // Reverse to show latest coaches first
                 } else {
                     setError('Données des coachs non valides.');
                 }
@@ -32,13 +32,19 @@ const CoachList = () => {
         fetchCoaches();
     }, []);
 
+    // Pagination logic
+    const indexOfLastCoach = currentPage * coachesPerPage;
+    const indexOfFirstCoach = indexOfLastCoach - coachesPerPage;
+    const currentCoaches = coaches.slice(indexOfFirstCoach, indexOfLastCoach); // Slice array to show only current page coaches
+
+    const paginate = (pageNumber) => setCurrentPage(pageNumber); // Change page
+
     if (loading) return <p>Chargement des coachs...</p>;
     if (error) return <p>Erreur : {error}</p>;
 
     return (
         <div>
             <Header />
-            {/* Bannière */}
             <div className="bannier-coach">
                 <h1>Découvrez nos meilleurs coachs sportifs</h1>
             </div>
@@ -62,7 +68,7 @@ const CoachList = () => {
             </div>
             {/* Liste des coachs */}
             <div className="coach-grid">
-                {coaches.map((coach) => (
+                {currentCoaches.map((coach) => (
                     <div key={coach.id} className="coach-card">
                         {/* Add coach profile image */}
                         <img src={coach.profile_image || 'default_photo_url'} alt={coach.name} className="profile-image" />
@@ -72,18 +78,14 @@ const CoachList = () => {
                     </div>
                 ))}
             </div>
-            <h1>
-                <span className="text-blue">Découvrez  </span>
-                <span className="text-green">nos meilleurs</span>
-            </h1>
 
-            <div className='food-down'></div>
-
-            {/* Button to redirect to recettes */}
-            <div className="recettes-button-container">
-                <Link to="/recettes" className="recettes-button">
-                    Voir les recettes
-                </Link>
+            {/* Pagination */}
+            <div className="pagination">
+                {Array.from({ length: Math.ceil(coaches.length / coachesPerPage) }, (_, i) => (
+                    <button key={i + 1} onClick={() => paginate(i + 1)} className={`page-link ${currentPage === i + 1 ? 'active' : ''}`}>
+                        {i + 1}
+                    </button>
+                ))}
             </div>
 
             <Footer />
